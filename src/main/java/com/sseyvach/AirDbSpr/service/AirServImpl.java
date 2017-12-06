@@ -41,7 +41,7 @@ public class AirServImpl implements AirServ {
 
     @Override
     @Transactional
-    public List<Aircraft> listairs() {
-        return this.airDao.listairs();
+    public List<Aircraft> listAirs() {
+        return this.airDao.listAirs();
     }
 }

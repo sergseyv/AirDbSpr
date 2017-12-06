@@ -9,5 +9,5 @@ public interface AirServ {
     public void updateAir (Aircraft aircraft);
     public void removeAir (int id);
     public Aircraft getAirById (int id);
-    public List<Aircraft> listairs();
+    public List<Aircraft> listAirs();
 }

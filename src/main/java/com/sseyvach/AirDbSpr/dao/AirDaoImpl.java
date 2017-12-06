@@ -44,7 +44,7 @@ public class AirDaoImpl implements AirDao {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Aircraft> listairs() {
+    public List<Aircraft> listAirs() {
         Session session = this.sessionFactory.getCurrentSession();
         List<Aircraft> airlist = session.createQuery("from Aircraft").list();
         return airlist;

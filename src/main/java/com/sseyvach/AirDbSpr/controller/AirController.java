@@ -25,7 +25,7 @@ public class AirController {
     @RequestMapping (value = "airs11", method = RequestMethod.GET)
     public String listAirs (Model model) {
         model.addAttribute("aircraft", new Aircraft());
-        model.addAttribute("listAirs", this.airServ.listairs());
+        model.addAttribute("listAirs", this.airServ.listAirs());
         return "airs11";
     }
 
@@ -49,7 +49,7 @@ public class AirController {
     @RequestMapping("edit/{id}")
     public String editAir(@PathVariable("id") int id, Model model){
         model.addAttribute("aircraft", this.airServ.getAirById(id));
-        model.addAttribute("listAirs", this.airServ.listairs());
+        model.addAttribute("listAirs", this.airServ.listAirs());
 
         return "airs11";
     }

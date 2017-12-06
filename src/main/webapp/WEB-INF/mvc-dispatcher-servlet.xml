@@ -21,9 +21,9 @@
         <property name="password" value="15426"/>
     </bean>
 
-    <!-- Hibernate 4 SessionFactory Bean definition -->
-    <bean id="hibernate4AnnotatedSessionFactory"
-          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    <!-- Hibernate 5 SessionFactory Bean definition -->
+    <bean id="hibernate5AnnotatedSessionFactory"
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="annotatedClasses">
             <list>
@@ -41,7 +41,7 @@
 
 
     <bean id="airDao" class="com.sseyvach.AirDbSpr.dao.AirDaoImpl">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+        <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
     </bean>
 
     <bean id="airServ" class="com.sseyvach.AirDbSpr.service.AirServImpl">
@@ -52,8 +52,8 @@
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
     </bean>
 
     <mvc:default-servlet-handler/>

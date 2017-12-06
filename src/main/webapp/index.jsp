@@ -7,7 +7,7 @@
 <body>
 <h3>Четатутаяхз</h3>
 <br/>
-<a href="<c:url value="airs11"/>" target="_blank">Books list</a>
+<a href="<c:url value="airs11"/>" target="_blank">самалот</a>
 <br/>
 </body>
 </html>
