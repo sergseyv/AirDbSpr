@@ -9,6 +9,6 @@ public interface AirDao {
     public void updateAir (Aircraft aircraft);
     public void removeAir (int id);
     public Aircraft getAirById (int id);
-    public List<Aircraft> listbooks();
+    public List<Aircraft> listairs();
 
 }
