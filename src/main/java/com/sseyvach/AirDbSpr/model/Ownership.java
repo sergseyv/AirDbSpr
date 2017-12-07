@@ -52,15 +52,4 @@ public class Ownership {
         this.ownershipQuantity = ownershipQuantity;
     }
 
-    @Override
-    public String toString() {
-        return "Ownership{" +
-                "ownershipId=" + ownershipId +
-                ", ownershipIdCompanies=" + ownershipIdCompanies +
-                ", ownershipIdAircraft=" + ownershipIdAircraft +
-                ", ownershipQuantity=" + ownershipQuantity +
-                '}';
-    }
-
-
-}
+ }

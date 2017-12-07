@@ -22,36 +22,36 @@ public class AirController {
         this.airServ = airServ;
     }
 
-    @RequestMapping (value = "airs11", method = RequestMethod.GET)
+    @RequestMapping (value = "mainpage", method = RequestMethod.GET)
     public String listAirs (Model model) {
         model.addAttribute("aircraft", new Aircraft());
-        model.addAttribute("listAirs", this.airServ.listAirs());
-        return "airs11";
+        model.addAttribute("listAirs222", this.airServ.listAirs());
+        return "mainpage";
     }
 
-    @RequestMapping (value = "/airs11/add", method = RequestMethod.POST)
+    @RequestMapping (value = "/mainpage/add", method = RequestMethod.POST)
     public String addAir ( @ModelAttribute("air") Aircraft aircraft ) {
          if ( aircraft.getAircraftId() == 0 ) {
              this.airServ.addAir(aircraft);
          } else {
              this.airServ.updateAir(aircraft);
          }
-        return "redirect:/airs11";
+        return "redirect:/mainpage";
     }
 
     @RequestMapping("/remove/{id}")
     public String removeAir(@PathVariable("id") int id){
         this.airServ.removeAir(id);
 
-        return "redirect:/airs11";
+        return "redirect:/mainpage";
     }
 
     @RequestMapping("edit/{id}")
     public String editAir(@PathVariable("id") int id, Model model){
         model.addAttribute("aircraft", this.airServ.getAirById(id));
-        model.addAttribute("listAirs", this.airServ.listAirs());
+        model.addAttribute("listAirs222", this.airServ.listAirs());
 
-        return "airs11";
+        return "mainpage";
     }
 
     @RequestMapping("airdata/{id}")

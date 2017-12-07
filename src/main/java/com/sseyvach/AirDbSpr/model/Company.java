@@ -41,14 +41,4 @@ public class Company {
         this.companyCountry = companyCountry;
     }
 
-    @Override
-    public String toString() {
-        return "Company{" +
-                "companyId=" + companyId +
-                ", companyName='" + companyName + '\'' +
-                ", companyCountry='" + companyCountry + '\'' +
-                '}';
-    }
-
-
 }

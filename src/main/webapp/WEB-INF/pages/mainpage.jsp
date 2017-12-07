@@ -7,7 +7,7 @@
 <html>
 <head>
   <title>airssssssssssssss 11</title>
-  <link rel="stylesheet" type="text/css" href="style.css"/>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
 </head>
 <body>
 
@@ -18,20 +18,16 @@
 <br>
 
 <h1>списоккккк</h1>
-
-
-
   <table class="tg">
     <tr>
-      <th><b>idAircraft</b>    <br>    <small>aircraft ID</small>              </th>
-      <th><b>name</b>          <br>    <small>aircraft name</small>            </th>
-      <th><b>passengers</b>    <br>    <small>number of passengers</small>     </th>
-      <th><b>maxWeightKg</b>   <br>    <small>maximum weight, kg</small>       </th>
-      <th><b>maxRangeKm</b>    <br>    <small>maximum flight range, km</small> </th>
-      <th></th>
+      <th>aircraft ID</th>
+      <th>aircraft name</th>
+      <th>number of passengers</th>
+      <th>maximum weight, kg</th>
+      <th>maximum flight range, km</th>
     </tr>
 
-    <c:forEach items="${listAirs}" var="aircraft">
+    <c:forEach items="${listAirs222}" var="aircraft">
       <tr>
         <td>${aircraft.aircraftId}</td>
         <td>${aircraft.aircraftName}</td>
@@ -41,6 +37,25 @@
       </tr>
     </c:forEach>
   </table>
+
+
+<table class="tg">
+  <tr>
+    <th>company ID</th>
+    <th>company name</th>
+    <th>company country</th>
+  </tr>
+
+  <c:forEach items="${listComs222}" var="company">
+    <tr>
+      <td>${company.companyId}</td>
+      <td>${company.companyName}</td>
+      <td>${company.companyCountry}</td>
+    </tr>
+  </c:forEach>
+</table>
+
+
 
 </body>
 </html>

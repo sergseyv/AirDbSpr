@@ -4,7 +4,6 @@ import com.sseyvach.AirDbSpr.dao.AirDao;
 import com.sseyvach.AirDbSpr.model.Aircraft;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 @Service

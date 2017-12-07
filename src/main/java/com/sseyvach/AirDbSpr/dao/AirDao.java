@@ -5,10 +5,9 @@ import java.util.List;
 
 public interface AirDao {
 
-    public void addAir (Aircraft aircraft);
-    public void updateAir (Aircraft aircraft);
-    public void removeAir (int id);
-    public Aircraft getAirById (int id);
-    public List<Aircraft> listAirs();
-
+    void addAir (Aircraft aircraft);
+    void updateAir (Aircraft aircraft);
+    void removeAir (int id);
+    Aircraft getAirById (int id);
+    List<Aircraft> listAirs();
 }

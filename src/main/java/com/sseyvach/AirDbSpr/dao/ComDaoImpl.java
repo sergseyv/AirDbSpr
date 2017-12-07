@@ -1,13 +1,13 @@
 package com.sseyvach.AirDbSpr.dao;
 
-import com.sseyvach.AirDbSpr.model.Aircraft;
+import com.sseyvach.AirDbSpr.model.Company;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class AirDaoImpl implements AirDao {
+public class ComDaoImpl implements ComDao {
 
     private SessionFactory sessionFactory;
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -15,37 +15,36 @@ public class AirDaoImpl implements AirDao {
     }
 
     @Override
-    public void addAir(Aircraft aircraft) {
+    public void addCom(Company company) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(aircraft);
+        session.persist(company);
     }
 
     @Override
-    public void updateAir(Aircraft aircraft) {
+    public void updateCom(Company company) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.update(aircraft);
-
+        session.update(company);
     }
 
     @Override
-    public void removeAir(int id) {
+    public void removeCom(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Aircraft aircraft = (Aircraft) session.load (Aircraft.class, id);
-        if (aircraft != null) session.delete(aircraft);
+        Company company = (Company) session.load (Company.class, id);
+        if (company != null) session.delete(company);
     }
 
     @Override
-    public Aircraft getAirById(int id) {
+    public Company getComById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Aircraft aircraft = session.load (Aircraft.class, id);
-        return aircraft;
+        Company company = (Company) session.load (Company.class, id);
+        return company;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Aircraft> listAirs() {
+    public List<Company> listComs() {
         Session session = this.sessionFactory.getCurrentSession();
-        List<Aircraft> airlist = session.createQuery("from Aircraft").list();
-        return airlist;
+        List<Company> comlist = session.createQuery("from Company").list();
+        return comlist;
     }
 }

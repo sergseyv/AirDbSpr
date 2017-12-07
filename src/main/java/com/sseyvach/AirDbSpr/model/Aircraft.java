@@ -63,16 +63,4 @@ public class Aircraft {
         this.aircraftMaxRangeKm = aircraftMaxRangeKm;
     }
 
-    @Override
-    public String toString() {
-        return "Aircraft{" +
-                "aircraftId=" + aircraftId +
-                ", aircraftName='" + aircraftName + '\'' +
-                ", aircraftPassengers=" + aircraftPassengers +
-                ", aircraftMaxWeightKg=" + aircraftMaxWeightKg +
-                ", aircraftMaxRangeKm=" + aircraftMaxRangeKm +
-                '}';
-    }
-
-
 }

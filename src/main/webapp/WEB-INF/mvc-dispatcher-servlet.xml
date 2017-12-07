@@ -40,13 +40,21 @@
     </bean>
 
 
+
     <bean id="airDao" class="com.sseyvach.AirDbSpr.dao.AirDaoImpl">
         <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
     </bean>
-
     <bean id="airServ" class="com.sseyvach.AirDbSpr.service.AirServImpl">
         <property name="airDao" ref="airDao"/>
     </bean>
+
+    <bean id="comDao" class="com.sseyvach.AirDbSpr.dao.ComDaoImpl">
+        <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="comServ" class="com.sseyvach.AirDbSpr.service.ComServImpl">
+        <property name="comDao" ref="comDao"/>
+    </bean>
+
 
     <context:component-scan base-package="com.sseyvach.AirDbSpr"/>
 
