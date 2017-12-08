@@ -1,6 +1,8 @@
 package com.sseyvach.AirDbSpr.controller;
 
+import com.sseyvach.AirDbSpr.model.Aircraft;
 import com.sseyvach.AirDbSpr.model.Company;
+import com.sseyvach.AirDbSpr.service.AirServ;
 import com.sseyvach.AirDbSpr.service.ComServ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,9 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class ComController {
+public class MainController {
 
+    private AirServ airServ;
     private ComServ comServ;
+
+
+    @Autowired (required = true)
+    @Qualifier (value = "airServ")
+    public void setAirServ(AirServ airServ) {
+        this.airServ = airServ;
+    }
 
     @Autowired (required = true)
     @Qualifier (value = "comServ")
@@ -22,42 +32,50 @@ public class ComController {
         this.comServ = comServ;
     }
 
+
+
     @RequestMapping (value = "mainpage", method = RequestMethod.GET)
-    public String listComs (Model model) {
+    public String listAirs (Model model) {
+        model.addAttribute("aircraft", new Aircraft());
+        model.addAttribute("listAirs222", this.airServ.listAirs());
+
         model.addAttribute("company", new Company());
         model.addAttribute("listComs222", this.comServ.listComs());
+
         return "mainpage";
     }
 
+    /*
     @RequestMapping (value = "/mainpage/add", method = RequestMethod.POST)
-    public String addCom ( @ModelAttribute("com") Company company ) {
-        if ( company.getCompanyId() == 0 ) {
-            this.comServ.addCom(company);
-        } else {
-            this.comServ.updateCom(company);
-        }
+    public String addAir ( @ModelAttribute("air") Aircraft aircraft ) {
+         if ( aircraft.getAircraftId() == 0 ) {
+             this.airServ.addAir(aircraft);
+         } else {
+             this.airServ.updateAir(aircraft);
+         }
         return "redirect:/mainpage";
     }
 
     @RequestMapping("/remove/{id}")
-    public String removeCom(@PathVariable("id") int id){
-        this.comServ.removeCom(id);
+    public String removeAir(@PathVariable("id") int id){
+        this.airServ.removeAir(id);
+
         return "redirect:/mainpage";
     }
 
     @RequestMapping("edit/{id}")
-    public String editCom(@PathVariable("id") int id, Model model){
-        model.addAttribute("company", this.comServ.getComById(id));
-        model.addAttribute("listComs222", this.comServ.listComs());
+    public String editAir(@PathVariable("id") int id, Model model){
+        model.addAttribute("aircraft", this.airServ.getAirById(id));
+        model.addAttribute("listAirs222", this.airServ.listAirs());
 
         return "mainpage";
     }
 
-    @RequestMapping("comdata/{id}")
-    public String comData(@PathVariable("id") int id, Model model){
-        model.addAttribute("company", this.comServ.getComById(id));
-        return "comdata";
+    @RequestMapping("airdata/{id}")
+    public String airData(@PathVariable("id") int id, Model model){
+        model.addAttribute("aircraft", this.airServ.getAirById(id));
+        return "airdata";
     }
-
+*/
 
 }
