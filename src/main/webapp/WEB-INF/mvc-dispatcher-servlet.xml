@@ -47,6 +47,13 @@
         <property name="comDao" ref="comDao"/>
     </bean>
 
+    <bean id="ownDao" class="com.sseyvach.AirDbSpr.dao.OwnDaoImpl">
+        <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="ownServ" class="com.sseyvach.AirDbSpr.service.OwnServImpl">
+        <property name="ownDao" ref="ownDao"/>
+    </bean>
+
 
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
