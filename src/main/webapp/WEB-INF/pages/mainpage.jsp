@@ -11,14 +11,25 @@
 </head>
 <body>
 
-<a href="../../index.jsp">Back to main menu</a>
+<div align="center">
+  <hr width="50%">
+  <p><h2>Ok.</h2>
+  <p>Now we have 3 tables: <samp><b>"aircrafts"</b></samp>, <samp><b>"companies"</b></samp> and <samp><b>"ownership"</b></samp>.
+  <p>You can <b>Add</b>, <b>Update</b>, and <b>Delete</b> records from tables.
+  <p>Also, you can scroll down the page and see several JOIN-queries.
+  <p>
+  <hr width="50%">
+</div>
 
+<table border="2" width="90%"  bgcolor="#ffcccc">
+  <tr align="center">
+    <td><a href="<c:url value='/addaircraft'/>">Add</a></td>
+    <td><a href="<c:url value='/updaircraft'/>">Update</a></td>
+    <td><a href="<c:url value='/delaircraft'/>">Delete</a></td>
+  </tr>
+</table>
 
-<br>
-<br>
-
-<h1>списоккккк</h1>
-  <table class="tg">
+<table class="tg">
     <tr>
       <th>aircraft ID</th>
       <th>aircraft name</th>
@@ -27,7 +38,7 @@
       <th>maximum flight range, km</th>
     </tr>
 
-    <c:forEach items="${listAirs222}" var="aircraft">
+    <c:forEach items="${listAircrafts}" var="aircraft">
       <tr>
         <td>${aircraft.aircraftId}</td>
         <td>${aircraft.aircraftName}</td>
@@ -46,7 +57,7 @@
     <th>company country</th>
   </tr>
 
-  <c:forEach items="${listComs222}" var="company">
+  <c:forEach items="${listCompanies}" var="company">
     <tr>
       <td>${company.companyId}</td>
       <td>${company.companyName}</td>

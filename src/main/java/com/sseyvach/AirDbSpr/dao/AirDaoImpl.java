@@ -30,22 +30,20 @@ public class AirDaoImpl implements AirDao {
     @Override
     public void removeAir(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Aircraft aircraft = (Aircraft) session.load (Aircraft.class, id);
+        Aircraft aircraft = session.load (Aircraft.class, id);
         if (aircraft != null) session.delete(aircraft);
     }
 
     @Override
     public Aircraft getAirById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Aircraft aircraft = session.load (Aircraft.class, id);
-        return aircraft;
+        return session.load (Aircraft.class, id);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public List<Aircraft> listAirs() {
         Session session = this.sessionFactory.getCurrentSession();
-        List<Aircraft> airlist = session.createQuery("from Aircraft").list();
-        return airlist;
+        return session.createQuery("from Aircraft").list();
     }
 }

@@ -2,12 +2,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>Йо</title>
+  <title>Database "AVIA / Spring-Hibernate" - Welcome Page</title>
+</head>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<head>
+  <title>Database "AVIA" - Welcome Page</title>
 </head>
 <body>
-<h3>Четатутаяхз</h3>
-<br/>
-<a href="<c:url value="mainpage"/>" target="_blank">самалот</a>
-<br/>
+  <c:redirect url="mainpage"/>
 </body>
 </html>
+

@@ -24,22 +24,14 @@
     <!-- Hibernate 5 SessionFactory Bean definition -->
     <bean id="hibernate5AnnotatedSessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="annotatedClasses">
-            <list>
-                <value>com.sseyvach.AirDbSpr.model.Aircraft</value>
-                <value>com.sseyvach.AirDbSpr.model.Company</value>
-            </list>
-        </property>
+        <property name="packagesToScan" value="com.sseyvach.AirDbSpr.model" />
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
-                </prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
             </props>
         </property>
     </bean>
-
-
 
     <bean id="airDao" class="com.sseyvach.AirDbSpr.dao.AirDaoImpl">
         <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
@@ -56,7 +48,6 @@
     </bean>
 
 
-    <context:component-scan base-package="com.sseyvach.AirDbSpr"/>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
