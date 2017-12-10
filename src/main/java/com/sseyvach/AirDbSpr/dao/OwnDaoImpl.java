@@ -1,13 +1,13 @@
 package com.sseyvach.AirDbSpr.dao;
 
-import com.sseyvach.AirDbSpr.model.Company;
+import com.sseyvach.AirDbSpr.model.Ownership;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class ComDaoImpl implements ComDao {
+public class OwnDaoImpl implements OwnDao{
 
     private SessionFactory sessionFactory;
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -15,35 +15,37 @@ public class ComDaoImpl implements ComDao {
     }
 
     @Override
-    public void addCom(Company company) {
+    public void addOwn(Ownership ownership) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(company);
+        session.persist(ownership);
     }
 
     @Override
-    public void updateCom(Company company) {
+    public void updateOwn(Ownership ownership) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.update(company);
+        session.update(ownership);
+
     }
 
     @Override
-    public void removeCom(int id) {
+    public void removeOwn(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Company company = (Company) session.load (Company.class, id);
-        if (company != null) session.delete(company);
+        Ownership ownership = (Ownership) session.load (Ownership.class, id);
+        if (ownership != null) session.delete(ownership);
+
     }
 
     @Override
-    public Company getComById(int id) {
+    public Ownership getOwnById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Company company = (Company) session.load (Company.class, id);
-        return company;
+        Ownership ownership = (Ownership) session.load (Ownership.class, id);
+        return ownership;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Company> listComs() {
+    public List<Ownership> listOwns() {
         Session session = this.sessionFactory.getCurrentSession();
-        return session.createQuery("from Company").list();
+        return session.createQuery("from Ownership").list();
     }
 }
