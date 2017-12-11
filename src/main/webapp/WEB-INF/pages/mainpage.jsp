@@ -7,30 +7,34 @@
 <html>
 <head>
   <title>airssssssssssssss 11</title>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style1.css"/>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style2.css"/>
 </head>
 
 <body>
-
 <div class ="head">
-  <p>Now we have database with 3 tables: <b>"aircrafts"</b>, <b>"companies"</b> and <b>"ownership"</b>.
-  <p>You can <b>Add</b>, <b>Update</b>, and <b>Delete</b> records from tables.
+  <p>Now we have database with 3 tables:
+    <span class="head1">"aircrafts"</span>,
+    <span class="head1">"companies"</span> and
+    <span class="head1">"ownership"</span>.
+  <p>You can
+    <span class="head1">Add</span>,
+    <span class="head1">Update</span>, and
+    <span class="head1">Delete</span> records from tables.
   <p>Also, you can scroll down the page and see several JOIN-queries.
 </div>
-
-<p>
-<p>
-
-
+<p>&nbsp;
 <table class="tb_main">
   <tr align="center">
     <td valign="top" width="40%">
       <div class ="head2">aircrafts</div>
       <table class="tb_edit">
         <tr align="center">
-          <td><a href="<c:url value='/addaircraft'/>">Add</a></td>
-          <td><a href="<c:url value='/updaircraft'/>">Update</a></td>
-          <td><a href="<c:url value='/delaircraft'/>">Delete</a></td>
+          <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
+            onClick="document.location='/addaircraft'"> Add </td>
+          <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
+              onClick="document.location='/updaircraft'"> Update </td>
+          <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
+              onClick="document.location='/delaircraft'"> Delete </td>
         </tr>
       </table>
 
@@ -62,16 +66,19 @@
 
 
 
-    <td valign="top" width="30%">
+    <td valign="top" width="35%">
 
     <div class ="head2">companies</div>
 
     <table class="tb_edit">
-        <tr align="center">
-          <td><a href="<c:url value='/addcompany'/>">Add</a></td>
-          <td><a href="<c:url value='/updcompany'/>">Update</a></td>
-          <td><a href="<c:url value='/delcompany'/>">Delete</a></td>
-        </tr>
+      <tr align="center">
+        <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
+            onClick="document.location='/addcompany'"> Add </td>
+        <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
+            onClick="document.location='/updcompany'"> Update </td>
+        <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
+            onClick="document.location='/delcompany'"> Delete </td>
+      </tr>
       </table>
 
 
@@ -96,24 +103,27 @@
 
 
     </td>
-    <td valign="top" width="30%">
+    <td valign="top" width="25%">
       <div class ="head2">ownership</div>
 
       <table class="tb_edit">
         <tr align="center">
-          <td><a href="<c:url value='/addownership'/>">Add</a></td>
-          <td><a href="<c:url value='/updownership'/>">Update</a></td>
-          <td><a href="<c:url value='/delownership'/>">Delete</a></td>
+          <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
+              onClick="document.location='/addownership'"> Add </td>
+          <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
+              onClick="document.location='/updownership'"> Update </td>
+          <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
+              onClick="document.location='/delownership'"> Delete </td>
         </tr>
       </table>
 
 
       <table class="tb_info">
         <tr>
-          <th>id_ownership</th>
-          <th>id_companies</th>
-          <th>id_aircraft</th>
-          <th>quantity</th>
+          <th>ownership ID</th>
+          <th>company ID</th>
+          <th>aircraft ID</th>
+          <th>quantity of aircrafts</th>
         </tr>
 
         <c:forEach items="${listOwnerships}" var="ownership">

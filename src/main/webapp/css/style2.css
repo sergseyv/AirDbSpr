@@ -5,12 +5,16 @@ body{
 .head{
     font: 16pt monospace;
     text-align: center;
-    border: 2px;
-    border-style: solid;
-    border-color: #00331a;
-    background: #e6fff3;
+    background: #99ffcc;
     padding: 8px;
+    border-bottom: 3px solid #00331a;
+    border-top: 3px solid #00331a;
 }
+
+.head1 {
+     font: 18pt monospace;
+     font-weight: bold;
+ }
 
 .head2{
     font: 20pt monospace;
@@ -27,7 +31,6 @@ body{
 }
 
 .tb_edit {
-    background: #ffcccc;
     width: 95%;
     font: 14pt monospace;
     border-collapse:collapse;
@@ -36,12 +39,28 @@ body{
 
 .tb_edit td {
     width: 33%;
-    background: #00331a;
     border: 10px solid #e6fff3;
+    font-weight: bold
+}
+
+.tb_edit_def {
+    background-color: #004d28;
+    color: #e6fff3;
+}
+
+.tb_edit_over {
+    background-color: #001a0d;
+    color: #e6fff3;
+    cursor: pointer;
+}
+
+.tb_edit_out {
+    background-color: #004d28;
+    color: #e6fff3;
 }
 
 .tb_info {
-    width: 95%;
+    width: 92%;
     font: 12pt monospace;
     border-collapse:collapse;
 }
@@ -56,15 +75,4 @@ body{
     background: #ccffe6;
     border: 1px solid #00331a;
     text-align: left;
-}
-
-
-
-
-
-
-a {
-    text-decoration: none;
-    font-weight: bold;
-    color: #ccffe6;
 }
