@@ -7,7 +7,7 @@
 <html>
 <head>
   <title>airssssssssssssss 11</title>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style2.css"/>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css"/>
 </head>
 
 <body>
@@ -59,11 +59,6 @@
       </table>
 
     </td>
-
-
-
-
-
 
 
     <td valign="top" width="35%">

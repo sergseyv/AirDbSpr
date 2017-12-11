@@ -1,50 +1,38 @@
 package com.sseyvach.AirDbSpr.controller;
 
-import com.sseyvach.AirDbSpr.service.AirServ;
-import com.sseyvach.AirDbSpr.service.ComServ;
-import com.sseyvach.AirDbSpr.service.OwnServ;
+import com.sseyvach.AirDbSpr.model.Aircraft;
+import com.sseyvach.AirDbSpr.model.Company;
+import com.sseyvach.AirDbSpr.model.Ownership;
+
+import com.sseyvach.AirDbSpr.service.IService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MainController {
 
-    private AirServ airServ;
-    private ComServ comServ;
-    private OwnServ ownServ;
+    private IService service;
 
     @Autowired (required = true)
-    @Qualifier (value = "airServ")
-    public void setAirServ(AirServ airServ) {
-        this.airServ = airServ;
-    }
-
-    @Autowired (required = true)
-    @Qualifier (value = "comServ")
-    public void setComServ(ComServ comServ) {
-        this.comServ = comServ;
-    }
-
-    @Autowired (required = true)
-    @Qualifier (value = "ownServ")
-    public void setOwnServ(OwnServ ownServ) {
-        this.ownServ = ownServ;
+    @Qualifier (value = "servBean")
+    public void setService(IService service) {
+        this.service = service;
     }
 
 
     @RequestMapping (value = "mainpage", method = RequestMethod.GET)
-    public String listAirs (Model model) {
-        model.addAttribute("listAircrafts", this.airServ.listAirs());
-        model.addAttribute("listCompanies", this.comServ.listComs());
-        model.addAttribute("listOwnerships", this.ownServ.listOwns());
+    public String listRecords(Model model) {
+        model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
+        model.addAttribute ( "listCompanies", this.service.listRecords(Company.class) );
+        model.addAttribute ( "listOwnerships", this.service.listRecords(Ownership.class) );
         return "mainpage";
     }
-
+/*
     @RequestMapping("/remove/{id}")
     public String removeAir(@PathVariable("id") int id){
         this.airServ.removeAir(id);
@@ -67,7 +55,7 @@ public class MainController {
         @RequestMapping("edit/{id}")
         public String editAir(@PathVariable("id") int id, Model model){
             model.addAttribute("aircraft", this.airServ.getAirById(id));
-            model.addAttribute("listAircrafts", this.airServ.listAirs());
+            model.addAttribute("listAircrafts", this.airServ.listRecords());
 
             return "mainpage";
         }

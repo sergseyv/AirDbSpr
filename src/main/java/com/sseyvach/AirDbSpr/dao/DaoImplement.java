@@ -1,13 +1,13 @@
 package com.sseyvach.AirDbSpr.dao;
 
-import com.sseyvach.AirDbSpr.model.Ownership;
+import com.sseyvach.AirDbSpr.model.DBRecord;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class OwnDaoImpl implements OwnDao{
+public class DaoImplement implements IDao {
 
     private SessionFactory sessionFactory;
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -15,37 +15,34 @@ public class OwnDaoImpl implements OwnDao{
     }
 
     @Override
-    public void addOwn(Ownership ownership) {
+    public void add(DBRecord dbRecord) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(ownership);
+        session.persist(dbRecord);
     }
 
     @Override
-    public void updateOwn(Ownership ownership) {
+    public void update(DBRecord dbRecord) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.update(ownership);
-
+        session.update(dbRecord);
     }
 
     @Override
-    public void removeOwn(int id) {
+    public void remove(Class clazz, int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Ownership ownership = (Ownership) session.load (Ownership.class, id);
-        if (ownership != null) session.delete(ownership);
-
+        DBRecord dbRecord = (DBRecord) session.load (clazz, id);
+        if (dbRecord != null) session.delete(dbRecord);
     }
 
     @Override
-    public Ownership getOwnById(int id) {
+    public DBRecord getById(Class clazz, int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Ownership ownership = (Ownership) session.load (Ownership.class, id);
-        return ownership;
+        return (DBRecord) session.load (clazz, id);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Ownership> listOwns() {
+    public List<DBRecord> listIhha(Class clazz) {
         Session session = this.sessionFactory.getCurrentSession();
-        return session.createQuery("from Ownership").list();
+        return session.createQuery ( "from " + clazz.getSimpleName() ).list();
     }
 }

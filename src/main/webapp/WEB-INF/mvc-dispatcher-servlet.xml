@@ -33,26 +33,14 @@
         </property>
     </bean>
 
-    <bean id="airDao" class="com.sseyvach.AirDbSpr.dao.AirDaoImpl">
+    <bean id="daoBean" class="com.sseyvach.AirDbSpr.dao.DaoImplement">
         <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
     </bean>
-    <bean id="airServ" class="com.sseyvach.AirDbSpr.service.AirServImpl">
-        <property name="airDao" ref="airDao"/>
+    <bean id="servBean" class="com.sseyvach.AirDbSpr.service.ServiceImplement">
+        <property name="dao" ref="daoBean"/>
     </bean>
 
-    <bean id="comDao" class="com.sseyvach.AirDbSpr.dao.ComDaoImpl">
-        <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
-    </bean>
-    <bean id="comServ" class="com.sseyvach.AirDbSpr.service.ComServImpl">
-        <property name="comDao" ref="comDao"/>
-    </bean>
 
-    <bean id="ownDao" class="com.sseyvach.AirDbSpr.dao.OwnDaoImpl">
-        <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
-    </bean>
-    <bean id="ownServ" class="com.sseyvach.AirDbSpr.service.OwnServImpl">
-        <property name="ownDao" ref="ownDao"/>
-    </bean>
 
 
 
