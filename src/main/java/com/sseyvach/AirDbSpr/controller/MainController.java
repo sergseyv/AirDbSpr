@@ -9,9 +9,11 @@ import com.sseyvach.AirDbSpr.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.ui.Model;
+
 
 @Controller
 public class MainController {
@@ -24,21 +26,43 @@ public class MainController {
         this.service = service;
     }
 
-
     @RequestMapping (value = "mainpage", method = RequestMethod.GET)
-    public String listRecords(Model model) {
+    public String listAllRecords(Model model) {
         model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
         model.addAttribute ( "listCompanies", this.service.listRecords(Company.class) );
         model.addAttribute ( "listOwnerships", this.service.listRecords(Ownership.class) );
         return "mainpage";
     }
 
-    @RequestMapping (value = "mainpage/aircraftadd", method = RequestMethod.POST)
-    public String addAir () {
+
+
+    @RequestMapping(value = "aircraftadd", method = RequestMethod.GET)
+    public String aircraftadd (Model model) {
+        Aircraft aircraft = new Aircraft();
+        model.addAttribute ("addAirc", aircraft);
+        model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
         return "addaircraft";
     }
 
+    @RequestMapping(value = "aircraftadd", method = RequestMethod.POST)
+    public String addBook(@ModelAttribute("addAirc") Aircraft aircraft){
+        this.service.add(aircraft);
+        return "redirect:aircraftadd";
+    }
 
+
+
+
+
+ /*   @RequestMapping (value = "addaircraft", method = RequestMethod.GET)
+    public String addAir ( @ModelAttributye("air") Aircraft aircraft ) {
+        if ( aircraft.getAircraftId() == 0 ) {
+            this.airServ.addAir(aircraft);
+        } else {
+            this.airServ.updateAir(aircraft);
+        }
+        return "redirect:/mainpage";
+    }*/
 
 
 
