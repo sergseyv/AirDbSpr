@@ -15,8 +15,8 @@ CREATE TABLE aircrafts (
 
 CREATE TABLE companies (
         id_companies INT NOT NULL AUTO_INCREMENT,
-        name VARCHAR(30) NULL,
-        country VARCHAR(30) NULL,
+        name VARCHAR(50) NULL,
+        country VARCHAR(50) NULL,
         PRIMARY KEY (id_companies))
         ENGINE = InnoDB
         DEFAULT CHARACTER SET = utf8

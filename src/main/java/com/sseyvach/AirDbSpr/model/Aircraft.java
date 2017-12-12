@@ -1,6 +1,9 @@
 package com.sseyvach.AirDbSpr.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table (name = "aircrafts")
@@ -12,15 +15,22 @@ public class Aircraft implements IDBRecord {
     private int aircraftId;
 
     @Column (name = "name")
+    @Size(min=2, max=50)
     private String aircraftName;
 
     @Column (name = "passengers")
+    @NotNull
+    @Min(0)
     private int aircraftPassengers;
 
     @Column (name = "max_weight__kg")
+    @NotNull
+    @Min(0)
     private int aircraftMaxWeightKg;
 
     @Column (name = "max_range__km")
+    @NotNull
+    @Min(0)
     private int aircraftMaxRangeKm;
 
     public int getAircraftId() {

@@ -1,6 +1,8 @@
 package com.sseyvach.AirDbSpr.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table (name = "ownership")
@@ -12,12 +14,18 @@ public class Ownership implements IDBRecord {
     private int ownershipId;
 
     @Column (name = "id_companies")
+    @NotNull
+    @Min(1)
     private int ownershipIdCompanies;
 
     @Column (name = "id_aircraft")
+    @NotNull
+    @Min(1)
     private int ownershipIdAircraft;
 
     @Column (name = "quantity")
+    @NotNull
+    @Min(0)
     private int ownershipQuantity;
 
     public int getOwnershipId() {
