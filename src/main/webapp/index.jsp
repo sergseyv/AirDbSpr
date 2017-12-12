@@ -9,7 +9,7 @@
   <title>Database "AVIA" - Welcome Page</title>
 </head>
 <body>
-  <c:redirect url="mainpage"/>
+  <c:redirect url="mainPageShow"/>
 </body>
 </html>
 

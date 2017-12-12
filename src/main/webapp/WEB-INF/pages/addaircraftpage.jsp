@@ -20,7 +20,7 @@
     <td valign="top" align="right" width="40%">
       <div class ="head2">Add aircraft</div>
 
-      <form:form method="POST" action="aircraftadd" modelAttribute="addAirc">
+      <form:form method="POST" action="aircraftaddDo" modelAttribute="Aircraft">
         <table>
           <tr>
             <td><form:label path="aircraftName">Aircraft name:</form:label></td>

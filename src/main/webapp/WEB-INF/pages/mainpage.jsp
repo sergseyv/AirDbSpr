@@ -29,11 +29,11 @@
       <table class="tb_edit">
         <tr align="center">
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-              onclick="location.href='aircraftadd'">Add</td>
+              onclick="location.href='aircraftAddShow'">Add</td>
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-              onclick="location.href='aircraftupd'">Update</td>
+              onclick="location.href='aircraftupdctrl'">Update</td>
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-              onclick="location.href='aircraftdel'">Delete</td>
+              onclick="location.href='aircraftdelctrl'">Delete</td>
         </tr>
       </table>
 
@@ -64,11 +64,11 @@
     <table class="tb_edit">
       <tr align="center">
         <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-            onclick="location.href='companyadd'">Add</td>
+            onclick="location.href='companyaddctrl'">Add</td>
         <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-            onclick="location.href='companyupd'">Update</td>
+            onclick="location.href='companyupdctrl'">Update</td>
         <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-            onclick="location.href='companydel'">Delete</td>
+            onclick="location.href='companydelctrl'">Delete</td>
       </tr>
       </table>
 
@@ -95,11 +95,11 @@
       <table class="tb_edit">
         <tr align="center">
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-              onclick="location.href='ownershipadd'">Add</td>
+              onclick="location.href='ownershipaddctrl'">Add</td>
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-              onclick="location.href='ownershipupd'">Update</td>
+              onclick="location.href='ownershipupdctrl'">Update</td>
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-              onclick="location.href='ownershipdel'">Delete</td>
+              onclick="location.href='ownershipdelctrl'">Delete</td>
         </tr>
       </table>
 

@@ -26,7 +26,7 @@ public class MainController {
         this.service = service;
     }
 
-    @RequestMapping (value = "mainpage", method = RequestMethod.GET)
+    @RequestMapping (value = "mainPageShow", method = RequestMethod.GET)
     public String listAllRecords(Model model) {
         model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
         model.addAttribute ( "listCompanies", this.service.listRecords(Company.class) );
@@ -35,19 +35,18 @@ public class MainController {
     }
 
 
-
-    @RequestMapping(value = "aircraftadd", method = RequestMethod.GET)
+    @RequestMapping(value = "aircraftAddShow", method = RequestMethod.GET)
     public String aircraftadd (Model model) {
         Aircraft aircraft = new Aircraft();
-        model.addAttribute ("addAirc", aircraft);
+        model.addAttribute ("Aircraft", aircraft);
         model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
-        return "addaircraft";
+        return "addaircraftpage";
     }
 
-    @RequestMapping(value = "aircraftadd", method = RequestMethod.POST)
-    public String addBook(@ModelAttribute("addAirc") Aircraft aircraft){
+    @RequestMapping(value = "aircraftaddDo", method = RequestMethod.POST)
+    public String addBook(@ModelAttribute("Aircraft") Aircraft aircraft){
         this.service.add(aircraft);
-        return "redirect:aircraftadd";
+        return "redirect:aircraftAddShow";
     }
 
 
