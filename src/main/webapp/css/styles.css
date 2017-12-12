@@ -75,3 +75,11 @@ body{
     border: 1px solid #00331a;
     text-align: left;
 }
+
+.btn {
+    font: 13pt monospace;
+}
+
+.formtxt{
+    font: 15pt monospace;
+}

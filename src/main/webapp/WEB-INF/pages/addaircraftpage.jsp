@@ -11,17 +11,17 @@
 </head>
 
 <body>
+
 <div class ="head">&nbsp;</div>
-<p>&nbsp;
+<p>
 
 <table class="tb_main">
   <tr align="center">
-
     <td valign="top" align="right" width="40%">
       <div class ="head2">Add aircraft</div>
 
-      <form:form method="POST" action="aircraftaddDo" modelAttribute="Aircraft">
-        <table>
+      <form:form method="POST" action="aircraftAddDo" modelAttribute="Aircraft">
+        <table border="0" cellpadding="5">
           <tr>
             <td><form:label path="aircraftName">Aircraft name:</form:label></td>
             <td><form:input path="aircraftName"/></td>
@@ -39,17 +39,18 @@
             <td><form:input path="aircraftMaxRangeKm"/></td>
           </tr>
 
-          <tr>
-            <td><input type="submit" value="Submit"/></td>
+          <tr align="right">
+            <td><button class = "btn" type="reset">Clear form</button></td>
+            <td><button class = "btn" type="submit">Add to database</button></td>
           </tr>
         </table>
       </form:form>
+      <button class = "btn" onclick="location.href='mainPageShow'">Return to Main Page</button>
 
     </td>
 
     <td valign="top" align="center">
       <div class ="head2">aircrafts</div>
-
       <table class="tb_info">
         <tr>
           <th>aircraft ID</th>
@@ -70,8 +71,6 @@
         </c:forEach>
       </table>
     </td>
-
-
 
   </tr>
 </table>
