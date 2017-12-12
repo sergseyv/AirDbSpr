@@ -1,6 +1,6 @@
 package com.sseyvach.AirDbSpr.dao;
 
-import com.sseyvach.AirDbSpr.model.DBRecord;
+import com.sseyvach.AirDbSpr.model.IDBRecord;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -15,13 +15,13 @@ public class DaoImplement implements IDao {
     }
 
     @Override
-    public void add(DBRecord dbRecord) {
+    public void add(IDBRecord dbRecord) {
         Session session = this.sessionFactory.getCurrentSession();
         session.persist(dbRecord);
     }
 
     @Override
-    public void update(DBRecord dbRecord) {
+    public void update(IDBRecord dbRecord) {
         Session session = this.sessionFactory.getCurrentSession();
         session.update(dbRecord);
     }
@@ -29,19 +29,19 @@ public class DaoImplement implements IDao {
     @Override
     public void remove(Class clazz, int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        DBRecord dbRecord = (DBRecord) session.load (clazz, id);
+        IDBRecord dbRecord = (IDBRecord) session.load (clazz, id);
         if (dbRecord != null) session.delete(dbRecord);
     }
 
     @Override
-    public DBRecord getById(Class clazz, int id) {
+    public IDBRecord getById(Class clazz, int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        return (DBRecord) session.load (clazz, id);
+        return (IDBRecord) session.load (clazz, id);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<DBRecord> listIhha(Class clazz) {
+    public List<IDBRecord> listIhha(Class clazz) {
         Session session = this.sessionFactory.getCurrentSession();
         return session.createQuery ( "from " + clazz.getSimpleName() ).list();
     }

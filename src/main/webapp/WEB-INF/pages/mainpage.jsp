@@ -6,13 +6,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>airssssssssssssss 11</title>
+  <title>"AVIA / Spring-Hibernate" - Main Page</title>
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css"/>
 </head>
 
 <body>
 <div class ="head">
-  <p>Now we have database with 3 tables:
+  <p>Now we have database with 3 tables:<p>
     <span class="head1">"aircrafts"</span>,
     <span class="head1">"companies"</span> and
     <span class="head1">"ownership"</span>.
@@ -20,7 +20,6 @@
     <span class="head1">Add</span>,
     <span class="head1">Update</span>, and
     <span class="head1">Delete</span> records from tables.
-  <p>Also, you can scroll down the page and see several JOIN-queries.
 </div>
 <p>&nbsp;
 <table class="tb_main">
@@ -30,11 +29,11 @@
       <table class="tb_edit">
         <tr align="center">
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-            onClick="document.location='/addaircraft'"> Add </td>
+            onClick="document.location='<c:url var="addAircraft" value="mainpage/aircraftadd"/>'"> Add </td>
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-              onClick="document.location='/updaircraft'"> Update </td>
+              onClick="document.location='/aircraftupd'"> Update </td>
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-              onClick="document.location='/delaircraft'"> Delete </td>
+              onClick="document.location='/aircraftdel'"> Delete </td>
         </tr>
       </table>
 
@@ -60,11 +59,8 @@
 
     </td>
 
-
     <td valign="top" width="35%">
-
     <div class ="head2">companies</div>
-
     <table class="tb_edit">
       <tr align="center">
         <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
@@ -75,7 +71,6 @@
             onClick="document.location='/delcompany'"> Delete </td>
       </tr>
       </table>
-
 
       <table class="tb_info">
         <tr>
@@ -93,10 +88,6 @@
         </c:forEach>
       </table>
 
-
-
-
-
     </td>
     <td valign="top" width="25%">
       <div class ="head2">ownership</div>
@@ -111,7 +102,6 @@
               onClick="document.location='/delownership'"> Delete </td>
         </tr>
       </table>
-
 
       <table class="tb_info">
         <tr>

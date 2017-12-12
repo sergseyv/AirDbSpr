@@ -32,7 +32,19 @@ public class MainController {
         model.addAttribute ( "listOwnerships", this.service.listRecords(Ownership.class) );
         return "mainpage";
     }
-/*
+
+    @RequestMapping (value = "mainpage/aircraftadd", method = RequestMethod.POST)
+    public String addAir () {
+        return "addaircraft";
+    }
+
+
+
+
+
+
+    /*
+
     @RequestMapping("/remove/{id}")
     public String removeAir(@PathVariable("id") int id){
         this.airServ.removeAir(id);

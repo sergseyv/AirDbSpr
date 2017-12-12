@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table (name = "aircrafts")
-public class Aircraft implements DBRecord {
+public class Aircraft implements IDBRecord {
 
     @Id
     @Column (name = "id_aircraft")
