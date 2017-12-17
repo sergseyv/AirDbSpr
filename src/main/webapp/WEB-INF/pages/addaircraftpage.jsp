@@ -21,22 +21,29 @@
       <div class ="head2">Add aircraft</div>
 
       <form:form method="POST" action="aircraftAddDo" modelAttribute="Aircraft">
+
         <table border="0" cellpadding="5">
           <tr>
+
             <td><form:label path="aircraftName">Aircraft name:</form:label></td>
             <td><form:input path="aircraftName"/></td>
+            <td> <form:errors path="aircraftName" cssClass="valid_error" /></td>
+
           </tr>
           <tr>
             <td><form:label path="aircraftPassengers">Number of passengers:</form:label></td>
             <td><form:input path="aircraftPassengers"/></td>
+            <td></td>
           </tr>
           <tr>
             <td><form:label path="aircraftMaxWeightKg">Maximum weight: <small>(numbers only!)</small></form:label></td>
             <td><form:input path="aircraftMaxWeightKg"/></td>
+            <td></td>
           </tr>
           <tr>
             <td><form:label path="aircraftMaxRangeKm">Maximum flight range, km: <small>(numbers only!)</small></form:label></td>
             <td><form:input path="aircraftMaxRangeKm"/></td>
+            <td></td>
           </tr>
 
           <tr align="right">

@@ -83,3 +83,9 @@ body{
 .formtxt{
     font: 15pt monospace;
 }
+
+.valid_error {
+    color: red;
+    font-size: 0.9em;
+    font-weight: bold;
+}

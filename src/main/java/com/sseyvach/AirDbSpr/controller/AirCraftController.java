@@ -5,14 +5,17 @@ import com.sseyvach.AirDbSpr.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
 
+import javax.validation.Valid;
+
 
 @Controller
-public class AircraftController {
+public class AirCraftController {
 
     private IService service;
 
@@ -25,15 +28,22 @@ public class AircraftController {
     @RequestMapping(value = "aircraftAddShow", method = RequestMethod.GET)
     public String aircraftAddShow (Model model) {
         Aircraft aircraft = new Aircraft();
-        model.addAttribute ("Aircraft", aircraft);
+        model.addAttribute ( "Aircraft", aircraft );
         model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
         return "addaircraftpage";
     }
 
     @RequestMapping(value = "aircraftAddDo", method = RequestMethod.POST)
-    public String aircraftAddDo (@ModelAttribute("Aircraft") Aircraft aircraft){
-        this.service.add(aircraft);
-        return "redirect:aircraftAddShow";
+    public String aircraftAddDo (@ModelAttribute ("Aircraft") @Valid Aircraft aircraft, BindingResult bindRes, Model model){
+        if (bindRes.hasErrors()) {
+            model.addAttribute ("Aircraft", aircraft);
+            model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
+            return "addaircraftpage";
+        }
+        else {
+            this.service.add(aircraft);
+            return "redirect:aircraftAddShow";
+        }
     }
 
 
