@@ -33,7 +33,7 @@
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
               onclick="location.href='aircraftUpdShow'">Update</td>
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-              onclick="location.href='aircraftdelctrl'">Delete</td>
+              onclick="location.href='aircraftDelShow'">Delete</td>
         </tr>
       </table>
 

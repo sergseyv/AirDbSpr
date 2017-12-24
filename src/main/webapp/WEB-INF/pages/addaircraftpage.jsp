@@ -25,7 +25,7 @@
         <table>
 
           <tr>
-            <td class="tb_other"><form:label path="aircraftName">Aircraft name:</form:label></td>
+            <td class="tb_other">Aircraft name:</td>
             <td class="tb_other"><form:input path="aircraftName"/></td>
           </tr>
           <tr>
@@ -36,7 +36,7 @@
           </tr>
 
           <tr>
-            <td class="tb_other"><form:label path="aircraftPassengers">Number of passengers:</form:label></td>
+            <td class="tb_other">Number of passengers:</td>
             <td class="tb_other"><form:input path="aircraftPassengers"/></td>
           </tr>
           <tr>
@@ -47,7 +47,7 @@
           </tr>
 
           <tr>
-            <td class="tb_other"><form:label path="aircraftMaxWeightKg">Maximum weight: </form:label></td>
+            <td class="tb_other">Maximum weight: </td>
             <td class="tb_other"><form:input path="aircraftMaxWeightKg"/></td>
           </tr>
           <tr>
@@ -58,7 +58,7 @@
           </tr>
 
           <tr>
-            <td class="tb_other"><form:label path="aircraftMaxRangeKm">Maximum flight range, km: </form:label></td>
+            <td class="tb_other">Maximum flight range, km: </td>
             <td class="tb_other"><form:input path="aircraftMaxRangeKm"/></td>
           </tr>
           <tr>

@@ -29,21 +29,20 @@ public class AirCraftController {
 /* ===================================== Add aircraft  ===========================================    */
 
     @RequestMapping(value = "aircraftAddShow", method = RequestMethod.GET)
-    public String aircraftAddShow (Model model) {
+    public String aircraftAddShow(Model model) {
         Aircraft aircraft = new Aircraft();
-        model.addAttribute ( "Aircraft", aircraft );
-        model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
+        model.addAttribute("Aircraft", aircraft);
+        model.addAttribute("listAircrafts", this.service.listRecords(Aircraft.class));
         return "addAircraftPage";
     }
 
     @RequestMapping(value = "aircraftAddDo", method = RequestMethod.POST)
-    public String aircraftAddDo (@ModelAttribute ("Aircraft") @Valid Aircraft aircraft, BindingResult bindRes, Model model){
+    public String aircraftAddDo(@ModelAttribute("Aircraft") @Valid Aircraft aircraft, BindingResult bindRes, Model model) {
         if (bindRes.hasErrors()) {
-            model.addAttribute ( "Aircraft", aircraft );
-            model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
+            model.addAttribute("Aircraft", aircraft);
+            model.addAttribute("listAircrafts", this.service.listRecords(Aircraft.class));
             return "addAircraftPage";
-        }
-        else {
+        } else {
             this.service.add(aircraft);
             return "redirect:aircraftAddShow";
         }
@@ -53,64 +52,42 @@ public class AirCraftController {
 /* ===================================== Update aircraft  ===========================================    */
 
     @RequestMapping(value = "aircraftUpdShow", method = RequestMethod.GET)
-    public String aircraftUpdShow (Model model) {
+    public String aircraftUpdShow(Model model) {
         Aircraft aircraft = new Aircraft();
-        model.addAttribute ( "Aircraft", aircraft );
-        model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
+        model.addAttribute("Aircraft", aircraft);
+        model.addAttribute("listAircrafts", this.service.listRecords(Aircraft.class));
         return "updAircraftPage";
     }
 
     @RequestMapping(value = "aircraftUpdDo", method = RequestMethod.POST)
-    public String aircraftUpdDo (@ModelAttribute ("Aircraft") @Valid Aircraft aircraft, BindingResult bindRes, Model model){
+    public String aircraftUpdDo(@ModelAttribute("Aircraft") @Valid Aircraft aircraft, BindingResult bindRes, Model model) {
         if (bindRes.hasErrors()) {
-            model.addAttribute ( "Aircraft", aircraft );
-            model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
+            model.addAttribute("Aircraft", aircraft);
+            model.addAttribute("listAircrafts", this.service.listRecords(Aircraft.class));
             return "updAircraftPage";
-        }
-        else {
+        } else {
             this.service.update(aircraft);
             return "redirect:aircraftUpdShow";
         }
     }
 
 
+    /* ===================================== Delete aircraft  ===========================================    */
 
-
-
-    /*
-
-    @RequestMapping("/remove/{id}")
-    public String removeAir(@PathVariable("id") int id){
-        this.airServ.removeAir(id);
-        return "redirect:/mainpage";
+    @RequestMapping(value = "aircraftDelShow", method = RequestMethod.GET)
+    public String aircraftDelShow(Model model) {
+        Aircraft aircraft = new Aircraft();
+        model.addAttribute("Aircraft", aircraft);
+        model.addAttribute("listAircrafts", this.service.listRecords(Aircraft.class));
+        return "delAircraftPage";
     }
 
-    /*
-    @RequestMapping (value = "/mainpage/add", method = RequestMethod.POST)
-    public String addAir ( @ModelAttribute("air") Aircraft aircraft ) {
-         if ( aircraft.getAircraftId() == 0 ) {
-             this.airServ.addAir(aircraft);
-         } else {
-             this.airServ.updateAir(aircraft);
-         }
-        return "redirect:/mainpage";
-    }*/
-
-
-    /*
-        @RequestMapping("edit/{id}")
-        public String editAir(@PathVariable("id") int id, Model model){
-            model.addAttribute("aircraft", this.airServ.getAirById(id));
-            model.addAttribute("listAircrafts", this.airServ.listRecords());
-
-            return "mainpage";
-        }
-
-    @RequestMapping("airdata/{id}")
-    public String airData(@PathVariable("id") int id, Model model){
-        model.addAttribute("aircraft", this.airServ.getAirById(id));
-        return "airdata";
-    }*/
-
-
+    @RequestMapping(value = "aircraftDelDo", method = RequestMethod.POST)
+    public String aircraftDelDo(@ModelAttribute("Aircraft") Aircraft aircraft, Model model) {
+        this.service.remove(aircraft.getClass(), aircraft.getAircraftId());
+        return "redirect:aircraftDelShow";
+    }
 }
+
+
+
