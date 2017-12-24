@@ -29,6 +29,11 @@ body{
     border: 0px;
 }
 
+.tb_other {
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+
 .tb_edit {
     width: 95%;
     font: 14pt monospace;
@@ -86,6 +91,6 @@ body{
 
 .valid_error {
     color: red;
-    font-size: 0.9em;
+    font: 12pt monospace;
     font-weight: bold;
 }

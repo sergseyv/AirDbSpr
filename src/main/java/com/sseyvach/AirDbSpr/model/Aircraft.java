@@ -1,10 +1,7 @@
 package com.sseyvach.AirDbSpr.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "aircrafts")
@@ -17,13 +14,15 @@ public class Aircraft implements IDBRecord {
 
     @Column (name = "name")
     @NotNull(message="Please enter the name")
-    @Size(min=2, max=50, message="The name must be from 2 to 50 letters")
+    @NotEmpty(message="Please enter the name")
+    @Size(min=2, max=50, message="The name must be from 2 to 50 letters!")
     private String aircraftName;
 
     @Column (name = "passengers")
     @NotNull(message="Please enter the number")
     @Min(value = 0, message = "Please enter the number from 0 to 1 000 000")
     @Max(value = 1000000, message = "Please enter the number from 0 to 1 000 000")
+    @Digits(integer=5, fraction=0)
     private int aircraftPassengers;
 
     @Column (name = "max_weight__kg")

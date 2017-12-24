@@ -7,7 +7,7 @@
 <html>
 <head>
   <title>"AVIA / Spring-Hibernate" - Add Aircraft Page</title>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css"/>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles1.css"/>
 </head>
 
 <body>
@@ -22,33 +22,49 @@
 
       <form:form method="POST" action="aircraftAddDo" modelAttribute="Aircraft">
 
-        <table border="0" cellpadding="5">
-          <tr>
+        <table>
 
-            <td><form:label path="aircraftName">Aircraft name:</form:label></td>
-            <td><form:input path="aircraftName"/></td>
-            <td> <form:errors path="aircraftName" cssClass="valid_error" /></td>
+          <tr>
+            <td class="tb_other"><form:label path="aircraftName">Aircraft name:</form:label></td>
+            <td class="tb_other"><form:input path="aircraftName"/></td>
+          </tr>
+          <tr>
+            <td colspan="2" valign="top" align="right"> &nbsp; <form:errors path="aircraftName" cssClass="valid_error" /> </td>
+          </tr>
 
+          <tr>
+            <td class="tb_other"><form:label path="aircraftPassengers">Number of passengers:</form:label></td>
+            <td class="tb_other"><form:input path="aircraftPassengers"/></td>
           </tr>
           <tr>
-            <td><form:label path="aircraftPassengers">Number of passengers:</form:label></td>
-            <td><form:input path="aircraftPassengers"/></td>
-            <td></td>
+            <td colspan="2" valign="top" align="right"> &nbsp;
+
+
+
+
+
+              <form:errors path="aircraftPassengers" cssClass="valid_error" /> </td>
+          </tr>
+
+          <tr>
+            <td class="tb_other"><form:label path="aircraftMaxWeightKg">Maximum weight: <small>(numbers only!)</small></form:label></td>
+            <td class="tb_other"><form:input path="aircraftMaxWeightKg"/></td>
           </tr>
           <tr>
-            <td><form:label path="aircraftMaxWeightKg">Maximum weight: <small>(numbers only!)</small></form:label></td>
-            <td><form:input path="aircraftMaxWeightKg"/></td>
-            <td></td>
+            <td colspan="2" valign="top" align="right"> &nbsp; <form:errors path="aircraftMaxWeightKg" cssClass="valid_error" /> </td>
+          </tr>
+
+          <tr>
+            <td class="tb_other"><form:label path="aircraftMaxRangeKm">Maximum flight range, km: <small>(numbers only!)</small></form:label></td>
+            <td class="tb_other"><form:input path="aircraftMaxRangeKm"/></td>
           </tr>
           <tr>
-            <td><form:label path="aircraftMaxRangeKm">Maximum flight range, km: <small>(numbers only!)</small></form:label></td>
-            <td><form:input path="aircraftMaxRangeKm"/></td>
-            <td></td>
+            <td colspan="2" valign="top" align="right"> &nbsp; <form:errors path="aircraftMaxRangeKm" cssClass="valid_error" /> </td>
           </tr>
 
           <tr align="right">
-            <td><button class = "btn" type="reset">Clear form</button></td>
-            <td><button class = "btn" type="submit">Add to database</button></td>
+            <td class="tb_other"><button class = "btn" type="reset">Clear form</button></td>
+            <td class="tb_other"><button class = "btn" type="submit">Add to database</button></td>
           </tr>
         </table>
       </form:form>
