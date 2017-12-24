@@ -28,7 +28,7 @@ public class MainController {
         model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
         model.addAttribute ( "listCompanies", this.service.listRecords(Company.class) );
         model.addAttribute ( "listOwnerships", this.service.listRecords(Ownership.class) );
-        return "mainpage";
+        return "mainPage";
     }
 
 }

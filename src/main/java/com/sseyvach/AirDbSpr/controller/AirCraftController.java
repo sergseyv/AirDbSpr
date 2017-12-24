@@ -25,20 +25,23 @@ public class AirCraftController {
         this.service = service;
     }
 
+
+/* ===================================== Add aircraft  ===========================================    */
+
     @RequestMapping(value = "aircraftAddShow", method = RequestMethod.GET)
     public String aircraftAddShow (Model model) {
         Aircraft aircraft = new Aircraft();
         model.addAttribute ( "Aircraft", aircraft );
         model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
-        return "addaircraftpage";
+        return "addAircraftPage";
     }
 
     @RequestMapping(value = "aircraftAddDo", method = RequestMethod.POST)
     public String aircraftAddDo (@ModelAttribute ("Aircraft") @Valid Aircraft aircraft, BindingResult bindRes, Model model){
         if (bindRes.hasErrors()) {
-            model.addAttribute ("Aircraft", aircraft);
+            model.addAttribute ( "Aircraft", aircraft );
             model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
-            return "addaircraftpage";
+            return "addAircraftPage";
         }
         else {
             this.service.add(aircraft);
@@ -47,16 +50,29 @@ public class AirCraftController {
     }
 
 
+/* ===================================== Update aircraft  ===========================================    */
 
- /*   @RequestMapping (value = "addaircraft", method = RequestMethod.GET)
-    public String addAir ( @ModelAttributye("air") Aircraft aircraft ) {
-        if ( aircraft.getAircraftId() == 0 ) {
-            this.airServ.addAir(aircraft);
-        } else {
-            this.airServ.updateAir(aircraft);
+    @RequestMapping(value = "aircraftUpdShow", method = RequestMethod.GET)
+    public String aircraftUpdShow (Model model) {
+        Aircraft aircraft = new Aircraft();
+        model.addAttribute ( "Aircraft", aircraft );
+        model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
+        return "updAircraftPage";
+    }
+
+    @RequestMapping(value = "aircraftUpdDo", method = RequestMethod.POST)
+    public String aircraftUpdDo (@ModelAttribute ("Aircraft") @Valid Aircraft aircraft, BindingResult bindRes, Model model){
+        if (bindRes.hasErrors()) {
+            model.addAttribute ( "Aircraft", aircraft );
+            model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
+            return "updAircraftPage";
         }
-        return "redirect:/mainpage";
-    }*/
+        else {
+            this.service.update(aircraft);
+            return "redirect:aircraftUpdShow";
+        }
+    }
+
 
 
 

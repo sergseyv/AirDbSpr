@@ -9,6 +9,5 @@ public interface IDao {
     void update (IDBRecord dbRecord);
     void remove (Class clazz, int id);
     IDBRecord getById (Class clazz, int id);
-    List<IDBRecord> listIhha(Class clazz);
-
+    List<IDBRecord> listRecords(Class clazz);
 }

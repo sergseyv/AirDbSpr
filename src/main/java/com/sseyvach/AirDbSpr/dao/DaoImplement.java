@@ -41,7 +41,7 @@ public class DaoImplement implements IDao {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<IDBRecord> listIhha(Class clazz) {
+    public List<IDBRecord> listRecords(Class clazz) {
         Session session = this.sessionFactory.getCurrentSession();
         return session.createQuery ( "from " + clazz.getSimpleName() ).list();
     }

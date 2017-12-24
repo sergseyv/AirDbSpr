@@ -7,18 +7,18 @@
 <html>
 <head>
   <title>"AVIA / Spring-Hibernate" - Add Aircraft Page</title>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles1.css"/>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styl1q.css"/>
 </head>
 
 <body>
 
-<div class ="head">&nbsp;</div>
+<div class ="head"><span class="head1">Add aircraft</span></div>
 <p>
 
 <table class="tb_main">
   <tr align="center">
     <td valign="top" align="right" width="40%">
-      <div class ="head2">Add aircraft</div>
+      <div class ="head2">&nbsp;</div>
 
       <form:form method="POST" action="aircraftAddDo" modelAttribute="Aircraft">
 
@@ -29,7 +29,10 @@
             <td class="tb_other"><form:input path="aircraftName"/></td>
           </tr>
           <tr>
-            <td colspan="2" valign="top" align="right"> &nbsp; <form:errors path="aircraftName" cssClass="valid_error" /> </td>
+            <td colspan="2" align="right">
+              <c:set var="isError"><form:errors path="aircraftName"/></c:set>
+              <div class ="${not empty isError ? "errYes": "errNo"}">Please, enter the name from 2 to 50 characters &nbsp;</div>
+            </td>
           </tr>
 
           <tr>
@@ -37,34 +40,36 @@
             <td class="tb_other"><form:input path="aircraftPassengers"/></td>
           </tr>
           <tr>
-            <td colspan="2" valign="top" align="right"> &nbsp;
-
-
-
-
-
-              <form:errors path="aircraftPassengers" cssClass="valid_error" /> </td>
+            <td colspan="2" align="right">
+              <c:set var="isError"><form:errors path="aircraftPassengers"/></c:set>
+              <div class ="${not empty isError ? "errYes": "errNo"}">Please, enter the number from 0 to 10 000 &nbsp;</div>
+            </td>
           </tr>
 
           <tr>
-            <td class="tb_other"><form:label path="aircraftMaxWeightKg">Maximum weight: <small>(numbers only!)</small></form:label></td>
+            <td class="tb_other"><form:label path="aircraftMaxWeightKg">Maximum weight: </form:label></td>
             <td class="tb_other"><form:input path="aircraftMaxWeightKg"/></td>
           </tr>
           <tr>
-            <td colspan="2" valign="top" align="right"> &nbsp; <form:errors path="aircraftMaxWeightKg" cssClass="valid_error" /> </td>
+            <td colspan="2" align="right">
+              <c:set var="isError"><form:errors path="aircraftMaxWeightKg"/></c:set>
+              <div class ="${not empty isError ? "errYes": "errNo"}">Please, enter the number from 0 to 1 000 000&nbsp;</div>
+            </td>
           </tr>
 
           <tr>
-            <td class="tb_other"><form:label path="aircraftMaxRangeKm">Maximum flight range, km: <small>(numbers only!)</small></form:label></td>
+            <td class="tb_other"><form:label path="aircraftMaxRangeKm">Maximum flight range, km: </form:label></td>
             <td class="tb_other"><form:input path="aircraftMaxRangeKm"/></td>
           </tr>
           <tr>
-            <td colspan="2" valign="top" align="right"> &nbsp; <form:errors path="aircraftMaxRangeKm" cssClass="valid_error" /> </td>
+            <td colspan="2" align="right">
+              <c:set var="isError"><form:errors path="aircraftMaxRangeKm"/></c:set>
+              <div class ="${not empty isError ? "errYes": "errNo"}">Please, enter the number from 0 to 100 000 &nbsp;</div>
+            </td>
           </tr>
 
           <tr align="right">
-            <td class="tb_other"><button class = "btn" type="reset">Clear form</button></td>
-            <td class="tb_other"><button class = "btn" type="submit">Add to database</button></td>
+            <td colspan="2" align="right"><br><button class = "btn" type="submit">Add to database</button></td>
           </tr>
         </table>
       </form:form>

@@ -1,6 +1,8 @@
 package com.sseyvach.AirDbSpr.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -13,10 +15,14 @@ public class Company implements IDBRecord {
     private int companyId;
 
     @Column (name = "name")
+    @NotNull
+    @NotEmpty
     @Size(min=2, max=50)
     private String companyName;
 
     @Column (name = "country")
+    @NotNull
+    @NotEmpty
     @Size(min=2, max=50)
     private String companyCountry;
 

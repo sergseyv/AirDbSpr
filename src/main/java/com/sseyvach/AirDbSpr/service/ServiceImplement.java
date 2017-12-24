@@ -40,6 +40,6 @@ public class ServiceImplement implements IService {
     @Override
     @Transactional
     public List<IDBRecord> listRecords(Class clazz) {
-        return this.dao.listIhha(clazz);
+        return this.dao.listRecords(clazz);
     }
 }

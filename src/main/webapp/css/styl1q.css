@@ -19,7 +19,6 @@ body{
 .head2{
     font: 20pt monospace;
     font-weight: bold;
-    text-align: center;
     padding: 8px;
 }
 
@@ -32,6 +31,8 @@ body{
 .tb_other {
     padding-top: 10px;
     padding-bottom: 0px;
+    font: 14pt monospace;
+    font-weight: bold;
 }
 
 .tb_edit {
@@ -89,8 +90,14 @@ body{
     font: 15pt monospace;
 }
 
-.valid_error {
-    color: red;
+.errYes {
+    color: white;
+    background-color: red;
     font: 12pt monospace;
-    font-weight: bold;
+}
+
+.errNo {
+    color: black;
+    background-color:aquamarine;
+    font: 12pt monospace;
 }

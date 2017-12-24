@@ -13,29 +13,32 @@ public class Aircraft implements IDBRecord {
     private int aircraftId;
 
     @Column (name = "name")
-    @NotNull(message="Please enter the name")
-    @NotEmpty(message="Please enter the name")
-    @Size(min=2, max=50, message="The name must be from 2 to 50 letters!")
+    @NotNull
+    @NotEmpty
+    @Size(min=2, max=50)
     private String aircraftName;
 
     @Column (name = "passengers")
-    @NotNull(message="Please enter the number")
-    @Min(value = 0, message = "Please enter the number from 0 to 1 000 000")
-    @Max(value = 1000000, message = "Please enter the number from 0 to 1 000 000")
+    @NotNull
     @Digits(integer=5, fraction=0)
+    @Min(value = 0)
+    @Max(value = 10000)
     private int aircraftPassengers;
 
     @Column (name = "max_weight__kg")
-    @NotNull(message="Please enter the number")
-    @Min(value = 0, message = "Please enter the number from 0 to 1 000 000")
-    @Max(value = 1000000, message = "Please enter the number from 0 to 1 000 000")
+    @NotNull
+    @Digits(integer=7, fraction=0)
+    @Min(value = 0)
+    @Max(value = 1000000)
     private int aircraftMaxWeightKg;
 
     @Column (name = "max_range__km")
-    @NotNull(message="Please enter the number")
-    @Min(value = 0, message = "Please enter the number from 0 to 1 000 000")
-    @Max(value = 1000000, message = "Please enter the number from 0 to 1 000 000")
+    @NotNull
+    @Digits(integer=6, fraction=0)
+    @Min(value = 0)
+    @Max(value = 100000)
     private int aircraftMaxRangeKm;
+
 
     public int getAircraftId() {
         return aircraftId;
