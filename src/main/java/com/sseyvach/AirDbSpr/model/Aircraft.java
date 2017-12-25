@@ -10,6 +10,8 @@ public class Aircraft implements IDBRecord {
     @Id
     @Column(name = "id_aircraft")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
+    @Min(value = 1)
     private int aircraftId;
 
     @Column (name = "name")
@@ -82,4 +84,14 @@ public class Aircraft implements IDBRecord {
         this.aircraftMaxRangeKm = aircraftMaxRangeKm;
     }
 
+    @Override
+    public String toString() {
+        return "Aircraft{" +
+                "aircraftId=" + aircraftId +
+                ", aircraftName='" + aircraftName + '\'' +
+                ", aircraftPassengers=" + aircraftPassengers +
+                ", aircraftMaxWeightKg=" + aircraftMaxWeightKg +
+                ", aircraftMaxRangeKm=" + aircraftMaxRangeKm +
+                '}';
+    }
 }

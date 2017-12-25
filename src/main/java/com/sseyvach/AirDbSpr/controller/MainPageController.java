@@ -13,7 +13,7 @@ import org.springframework.ui.Model;
 
 
 @Controller
-public class MainController {
+public class MainPageController {
 
     private IService service;
 

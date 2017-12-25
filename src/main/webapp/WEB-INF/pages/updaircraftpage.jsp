@@ -20,19 +20,24 @@
     <td valign="top" align="right" width="40%">
       <div class ="head2">&nbsp;</div>
 
-      <form:form method="POST" action="aircraftUpdDo" modelAttribute="Aircraft">
+      <form:form method="POST" action="aircraftUpdAction" modelAttribute="Aircraft">
 
         <table>
           <tr>
             <td class="tb_other">Select ID of the record you want to edit.</td>
             <td class="tb_other" align="right">
               <form:select path="aircraftId">
+                  <option value=0>  < SELECT >  </option>
                   <c:forEach var="aircraft" items="${listAircrafts}">
-                    <option value="${aircraft.aircraftId}">
-                        ${aircraft.aircraftId}
-                    </option>
+                    <option value="${aircraft.aircraftId}">  ${aircraft.aircraftId}  </option>
                   </c:forEach>
               </form:select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" align="right">
+              <c:set var="isError"><form:errors path="aircraftId"/></c:set>
+              <div class ="${not empty isError ? "errYes": "errNo"}">Please, select aircraft's ID &nbsp;</div>
             </td>
           </tr>
 

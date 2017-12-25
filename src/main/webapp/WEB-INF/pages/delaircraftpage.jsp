@@ -20,7 +20,7 @@
     <td valign="top" align="right" width="40%">
       <div class ="head2">&nbsp;</div>
 
-      <form:form method="POST" action="aircraftDelDo" modelAttribute="Aircraft">
+      <form:form method="POST" action="aircraftDelAction" modelAttribute="Aircraft">
 
         <table>
 
