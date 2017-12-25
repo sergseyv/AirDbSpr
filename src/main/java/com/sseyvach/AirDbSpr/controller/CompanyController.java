@@ -1,6 +1,7 @@
 package com.sseyvach.AirDbSpr.controller;
 
 import com.sseyvach.AirDbSpr.model.Aircraft;
+import com.sseyvach.AirDbSpr.model.Company;
 import com.sseyvach.AirDbSpr.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,7 +16,7 @@ import javax.validation.Valid;
 
 
 @Controller
-public class AircraftController {
+public class CompanyController {
 
     private IService service;
 
@@ -26,16 +27,16 @@ public class AircraftController {
     }
 
 
-/* ===================================== Add aircraft  ===========================================    */
+/* ===================================== Add company  ===========================================    */
 
-    @RequestMapping(value = "aircraftAddShow", method = RequestMethod.GET)
-    public String aircraftAddShow(Model model) {
-        Aircraft aircraft = new Aircraft();
-        model.addAttribute("Aircraft", aircraft);
-        model.addAttribute("listAircrafts", this.service.listRecords(Aircraft.class));
-        return "addAircraftPage";
+    @RequestMapping(value = "companyAddShow", method = RequestMethod.GET)
+    public String companyAddShow(Model model) {
+        Company company = new Company();
+        model.addAttribute("Company", company);
+        model.addAttribute("listCompanies", this.service.listRecords(Company.class));
+        return "addCompanyPage";
     }
-
+/*
     @RequestMapping(value = "aircraftAddDo", method = RequestMethod.POST)
     public String aircraftAddDo(@ModelAttribute("Aircraft") @Valid Aircraft aircraft, BindingResult bindRes, Model model) {
         if (bindRes.hasErrors()) {
@@ -50,7 +51,7 @@ public class AircraftController {
 
 
 /* ===================================== Update aircraft  ===========================================    */
-
+/*
     @RequestMapping(value = "aircraftUpdShow", method = RequestMethod.GET)
     public String aircraftUpdShow(Model model) {
         Aircraft aircraft = new Aircraft();
@@ -73,7 +74,7 @@ public class AircraftController {
 
 
     /* ===================================== Delete aircraft  ===========================================    */
-
+/*
     @RequestMapping(value = "aircraftDelShow", method = RequestMethod.GET)
     public String aircraftDelShow(Model model) {
         Aircraft aircraft = new Aircraft();
@@ -87,6 +88,8 @@ public class AircraftController {
         this.service.remove(aircraft.getClass(), aircraft.getAircraftId());
         return "redirect:aircraftDelShow";
     }
+
+    */
 }
 
 
