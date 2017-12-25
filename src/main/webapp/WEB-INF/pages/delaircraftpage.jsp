@@ -7,7 +7,7 @@
 <html>
 <head>
   <title>"AVIA / Spring-Hibernate" - Delete Aircraft Page</title>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css"/>
 </head>
 
 <body>

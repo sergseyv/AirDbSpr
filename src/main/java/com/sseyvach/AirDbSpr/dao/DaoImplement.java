@@ -1,5 +1,6 @@
 package com.sseyvach.AirDbSpr.dao;
 
+import com.sseyvach.AirDbSpr.model.Aircraft;
 import com.sseyvach.AirDbSpr.model.IDBRecord;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -35,7 +36,7 @@ public class DaoImplement implements IDao {
     @Override
     public IDBRecord getById(Class clazz, int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        return (IDBRecord) session.load (clazz, id);
+        return (IDBRecord) session.get (clazz, id);
     }
 
     @Override

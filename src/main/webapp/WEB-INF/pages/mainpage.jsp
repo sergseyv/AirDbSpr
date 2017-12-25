@@ -7,7 +7,7 @@
 <html>
 <head>
   <title>"AVIA / Spring-Hibernate" - Main Page</title>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css"/>
 </head>
 
 <body>
@@ -34,6 +34,9 @@
               onclick="location.href='aircraftUpdShow'">Update</td>
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
               onclick="location.href='aircraftDelShow'">Delete</td>
+          <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
+              onclick="location.href='aircraftViewShow'">View</td>
+
         </tr>
       </table>
 

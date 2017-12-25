@@ -6,13 +6,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>"AVIA / Spring-Hibernate" - Add Aircraft Page</title>
+  <title>"AVIA / Spring-Hibernate" - View Aircraft Page</title>
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css"/>
 </head>
 
 <body>
 
-<div class ="head"><span class="head1">Add aircraft</span></div>
+<div class ="head"><span class="head1">View aircraft</span></div>
 <p>
 
 <table class="tb_main">
@@ -20,9 +20,26 @@
     <td valign="top" align="right" width="40%">
       <div class ="head2">&nbsp;</div>
 
-      <form:form method="POST" action="aircraftAddAction" modelAttribute="Aircraft">
+      <form:form method="POST" action="aircraftViewAction" modelAttribute="Aircraft">
 
         <table>
+          <tr>
+            <td class="tb_other">Select ID of the record you want to edit.</td>
+            <td class="tb_other" align="right">
+              <form:select path="aircraftId">
+                <option value=0>  < SELECT >  </option>
+                <c:forEach var="aircraft" items="${listAircrafts}">
+                  <option value="${aircraft.aircraftId}">  ${aircraft.aircraftId}  </option>
+                </c:forEach>
+              </form:select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" align="right">
+              <c:set var="isError"><form:errors path="aircraftId"/></c:set>
+              <div class ="${not empty isError ? "errYes": "errNo"}">Please, select aircraft's ID &nbsp;</div>
+            </td>
+          </tr>
 
           <tr>
             <td class="tb_other">Aircraft name:</td>
@@ -31,7 +48,7 @@
           <tr>
             <td colspan="2" align="right">
               <c:set var="isError"><form:errors path="aircraftName"/></c:set>
-              <div class ="${not empty isError ? "errYes": "errNo"}">Please, enter the name from 2 to 50 characters &nbsp;</div>
+              <div class ="${not empty isError ? "errYes": "errNo"}">Please, enter the name from 2 to 50 characters&nbsp;</div>
             </td>
           </tr>
 
@@ -69,7 +86,7 @@
           </tr>
 
           <tr align="right">
-            <td colspan="2" align="right"><br><button class = "btn" type="submit">Add to database</button></td>
+            <td colspan="2" align="right"><br><button class = "btn" type="submit">View record</button></td>
           </tr>
         </table>
       </form:form>

@@ -86,6 +86,36 @@ public class CRUDController {
         return jspPageAction(model, aircraft, false, "Aircraft", "listAircrafts", "delAircraftPage", this.service::remove);
     }
 
+    /* ------------- view  ------------- */
+
+    @RequestMapping(value = "aircraftViewShow", method = RequestMethod.GET)
+    public String aircraftViewShow(Model model) {
+        return jspPage(model, new Aircraft(), "Aircraft", "listAircrafts", "viewAircraftPage");
+    }
+    @RequestMapping(value = "aircraftViewAction", method = RequestMethod.POST)
+    public String aircraftViewAction(@ModelAttribute("Aircraft") Aircraft aircraft, Model model) {
+        return jspPageAction2(model, aircraft, aircraft.getAircraftId(), "Aircraft", "listAircrafts", "viewAircraftPage");
+      //  this.service.getById(aircraft.getClass(),aircraft.getAircraftId());
+     //   System.out.println(this.service.getById(aircraft.getClass(),aircraft.getAircraftId()));
+       // return "";
+    }
+
+
+    public String jspPageAction2 ( Model model, IDBRecord dbRecord, int id,
+                                  String recordInJsp, String listInJsp, String NameOfJspPage ){
+
+        IDBRecord recc = this.service.getById(Aircraft.class, id);
+/*
+        System.out.println((dbRecord.getClass()+"   "+ id));
+        System.out.println((recc.getClass()+"   "+ id));
+        System.out.println((Aircraft.class+"   "+ id));
+        System.out.println(recc.toString());
+*/
+        String s = jspPage(model, recc, recordInJsp, listInJsp, NameOfJspPage);
+        System.out.println(s);
+        return s;
+    }
+
 
 /* =============================== Company controller  =============================== */
 
