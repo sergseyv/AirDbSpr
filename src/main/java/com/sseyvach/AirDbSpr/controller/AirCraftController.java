@@ -14,6 +14,9 @@ import org.springframework.ui.Model;
 
 import javax.validation.Valid;
 
+interface IMethod {
+    void action(IDBRecord dbRecord);
+}
 
 @Controller
 public class AircraftController {
@@ -33,9 +36,8 @@ public class AircraftController {
 
     @RequestMapping(value = "aircraftAddDo", method = RequestMethod.POST)
     public String aircraftAddDo(@ModelAttribute("Aircraft") @Valid Aircraft aircraft, BindingResult bindRes, Model model) {
-        return jspAddPage(model, aircraft, bindRes, "Aircraft", "listAircrafts", "addAircraftPage");
+        return jspPageAction(model, aircraft, bindRes, "Aircraft", "listAircrafts", "addAircraftPage", this.service::add);
     }
-
 
     @RequestMapping(value = "aircraftUpdShow", method = RequestMethod.GET)
     public String aircraftUpdShow(Model model) {
@@ -45,7 +47,7 @@ public class AircraftController {
 
     @RequestMapping(value = "aircraftUpdDo", method = RequestMethod.POST)
     public String aircraftUpdDo(@ModelAttribute("Aircraft") @Valid Aircraft aircraft, BindingResult bindRes, Model model) {
-        return jspUpdPage(model, aircraft, bindRes, "Aircraft", "listAircrafts", "updAircraftPage");
+        return jspPageAction(model, aircraft, bindRes, "Aircraft", "listAircrafts", "updAircraftPage", this.service::update);
     }
 
     @RequestMapping(value = "aircraftDelShow", method = RequestMethod.GET)
@@ -60,16 +62,17 @@ public class AircraftController {
     }
 
 
-    public String jspPage(Model model, IDBRecord dbRecord, String recordInJsp ,String listInJsp, String NameOfJspPage) {
+    public String jspPage(Model model, IDBRecord dbRecord, String recordInJsp, String listInJsp, String NameOfJspPage) {
         model.addAttribute(recordInJsp, dbRecord);
         model.addAttribute(listInJsp, this.service.listRecords(dbRecord.getClass()));
         return NameOfJspPage;
     }
 
-    public String jspAddPage (Model model, IDBRecord dbRecord, BindingResult bindRes, String recordInJsp ,String listInJsp, String NameOfJspPage){
+    public String jspPageAction ( Model model, IDBRecord dbRecord, BindingResult bindRes,
+                                String recordInJsp, String listInJsp, String NameOfJspPage, IMethod method){
 
         if (!bindRes.hasErrors()) {
-            this.service.add(dbRecord);
+            method.action(dbRecord);
 
             try {
                 dbRecord = dbRecord.getClass().newInstance();
@@ -79,21 +82,6 @@ public class AircraftController {
         }
         return jspPage(model, dbRecord, recordInJsp, listInJsp, NameOfJspPage);
     }
-
-    public String jspUpdPage (Model model, IDBRecord dbRecord, BindingResult bindRes, String recordInJsp ,String listInJsp, String NameOfJspPage){
-
-        if (!bindRes.hasErrors()) {
-            this.service.update(dbRecord);
-
-            try {
-                dbRecord = dbRecord.getClass().newInstance();
-            } catch (InstantiationException|IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
-        return jspPage(model, dbRecord, recordInJsp, listInJsp, NameOfJspPage);
-    }
-
 
 }
 
