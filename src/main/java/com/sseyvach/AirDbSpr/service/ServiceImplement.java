@@ -27,8 +27,8 @@ public class ServiceImplement implements IService {
 
     @Override
     @Transactional
-    public void remove(Class clazz, int id) {
-        this.dao.remove(clazz, id);
+    public void remove(IDBRecord dbRecord) {
+        this.dao.remove(dbRecord);
     }
 
     @Override

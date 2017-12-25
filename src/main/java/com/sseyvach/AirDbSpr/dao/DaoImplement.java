@@ -27,10 +27,9 @@ public class DaoImplement implements IDao {
     }
 
     @Override
-    public void remove(Class clazz, int id) {
+    public void remove(IDBRecord dbRecord) {
         Session session = this.sessionFactory.getCurrentSession();
-        IDBRecord dbRecord = (IDBRecord) session.load (clazz, id);
-        if (dbRecord != null) session.delete(dbRecord);
+        session.delete(dbRecord);
     }
 
     @Override

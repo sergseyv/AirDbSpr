@@ -1,6 +1,7 @@
 package com.sseyvach.AirDbSpr.controller;
 
 import com.sseyvach.AirDbSpr.model.Aircraft;
+import com.sseyvach.AirDbSpr.model.IDBRecord;
 import com.sseyvach.AirDbSpr.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,68 +26,75 @@ public class AircraftController {
         this.service = service;
     }
 
-
-/* ===================================== Add aircraft  ===========================================    */
-
     @RequestMapping(value = "aircraftAddShow", method = RequestMethod.GET)
     public String aircraftAddShow(Model model) {
-        Aircraft aircraft = new Aircraft();
-        model.addAttribute("Aircraft", aircraft);
-        model.addAttribute("listAircrafts", this.service.listRecords(Aircraft.class));
-        return "addAircraftPage";
+        return jspPage(model, new Aircraft(), "Aircraft", "listAircrafts", "addAircraftPage");
     }
 
     @RequestMapping(value = "aircraftAddDo", method = RequestMethod.POST)
     public String aircraftAddDo(@ModelAttribute("Aircraft") @Valid Aircraft aircraft, BindingResult bindRes, Model model) {
-        if (bindRes.hasErrors()) {
-            model.addAttribute("Aircraft", aircraft);
-            model.addAttribute("listAircrafts", this.service.listRecords(Aircraft.class));
-            return "addAircraftPage";
-        } else {
-            this.service.add(aircraft);
-            return "redirect:aircraftAddShow";
-        }
+        return jspAddPage(model, aircraft, bindRes, "Aircraft", "listAircrafts", "addAircraftPage");
     }
 
-
-/* ===================================== Update aircraft  ===========================================    */
 
     @RequestMapping(value = "aircraftUpdShow", method = RequestMethod.GET)
     public String aircraftUpdShow(Model model) {
-        Aircraft aircraft = new Aircraft();
-        model.addAttribute("Aircraft", aircraft);
-        model.addAttribute("listAircrafts", this.service.listRecords(Aircraft.class));
-        return "updAircraftPage";
+        return jspPage(model, new Aircraft(), "Aircraft", "listAircrafts", "updAircraftPage");
     }
+
 
     @RequestMapping(value = "aircraftUpdDo", method = RequestMethod.POST)
     public String aircraftUpdDo(@ModelAttribute("Aircraft") @Valid Aircraft aircraft, BindingResult bindRes, Model model) {
-        if (bindRes.hasErrors()) {
-            model.addAttribute("Aircraft", aircraft);
-            model.addAttribute("listAircrafts", this.service.listRecords(Aircraft.class));
-            return "updAircraftPage";
-        } else {
-            this.service.update(aircraft);
-            return "redirect:aircraftUpdShow";
-        }
+        return jspUpdPage(model, aircraft, bindRes, "Aircraft", "listAircrafts", "updAircraftPage");
     }
-
-
-    /* ===================================== Delete aircraft  ===========================================    */
 
     @RequestMapping(value = "aircraftDelShow", method = RequestMethod.GET)
     public String aircraftDelShow(Model model) {
-        Aircraft aircraft = new Aircraft();
-        model.addAttribute("Aircraft", aircraft);
-        model.addAttribute("listAircrafts", this.service.listRecords(Aircraft.class));
-        return "delAircraftPage";
+        return jspPage(model, new Aircraft(), "Aircraft", "listAircrafts", "delAircraftPage");
     }
 
     @RequestMapping(value = "aircraftDelDo", method = RequestMethod.POST)
     public String aircraftDelDo(@ModelAttribute("Aircraft") Aircraft aircraft) {
-        this.service.remove(aircraft.getClass(), aircraft.getAircraftId());
+        this.service.remove(aircraft);
         return "redirect:aircraftDelShow";
     }
+
+
+    public String jspPage(Model model, IDBRecord dbRecord, String recordInJsp ,String listInJsp, String NameOfJspPage) {
+        model.addAttribute(recordInJsp, dbRecord);
+        model.addAttribute(listInJsp, this.service.listRecords(dbRecord.getClass()));
+        return NameOfJspPage;
+    }
+
+    public String jspAddPage (Model model, IDBRecord dbRecord, BindingResult bindRes, String recordInJsp ,String listInJsp, String NameOfJspPage){
+
+        if (!bindRes.hasErrors()) {
+            this.service.add(dbRecord);
+
+            try {
+                dbRecord = dbRecord.getClass().newInstance();
+            } catch (InstantiationException|IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return jspPage(model, dbRecord, recordInJsp, listInJsp, NameOfJspPage);
+    }
+
+    public String jspUpdPage (Model model, IDBRecord dbRecord, BindingResult bindRes, String recordInJsp ,String listInJsp, String NameOfJspPage){
+
+        if (!bindRes.hasErrors()) {
+            this.service.update(dbRecord);
+
+            try {
+                dbRecord = dbRecord.getClass().newInstance();
+            } catch (InstantiationException|IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        return jspPage(model, dbRecord, recordInJsp, listInJsp, NameOfJspPage);
+    }
+
+
 }
 
 

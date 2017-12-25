@@ -7,7 +7,7 @@ import java.util.List;
 public interface IDao {
     void add (IDBRecord dbRecord);
     void update (IDBRecord dbRecord);
-    void remove (Class clazz, int id);
+    void remove (IDBRecord dbRecord);
     IDBRecord getById (Class clazz, int id);
     List<IDBRecord> listRecords(Class clazz);
 }

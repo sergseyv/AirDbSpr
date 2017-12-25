@@ -40,6 +40,8 @@ public class Aircraft implements IDBRecord {
     private int aircraftMaxRangeKm;
 
 
+    public Aircraft(){};
+
     public int getAircraftId() {
         return aircraftId;
     }
