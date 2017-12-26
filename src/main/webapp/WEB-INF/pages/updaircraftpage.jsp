@@ -27,7 +27,6 @@
             <td class="tb_other">Select ID of the record you want to edit.</td>
             <td class="tb_other" align="right">
               <form:select path="aircraftId">
-                  <option value=0>  < SELECT >  </option>
                   <c:forEach var="aircraft" items="${listAircrafts}">
                     <option value="${aircraft.aircraftId}">  ${aircraft.aircraftId}  </option>
                   </c:forEach>

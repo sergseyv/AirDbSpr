@@ -10,8 +10,6 @@ public class Aircraft implements IDBRecord {
     @Id
     @Column(name = "id_aircraft")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
-    @Min(value = 1)
     private int aircraftId;
 
     @Column (name = "name")

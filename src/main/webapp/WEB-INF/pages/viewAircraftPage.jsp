@@ -24,20 +24,13 @@
 
         <table>
           <tr>
-            <td class="tb_other">Select ID of the record you want to edit.</td>
+            <td class="tb_other">Select ID of the record you want to view.</td>
             <td class="tb_other" align="right">
               <form:select path="aircraftId">
-                <option value=0>  < SELECT >  </option>
                 <c:forEach var="aircraft" items="${listAircrafts}">
                   <option value="${aircraft.aircraftId}">  ${aircraft.aircraftId}  </option>
                 </c:forEach>
               </form:select>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2" align="right">
-              <c:set var="isError"><form:errors path="aircraftId"/></c:set>
-              <div class ="${not empty isError ? "errYes": "errNo"}">Please, select aircraft's ID &nbsp;</div>
             </td>
           </tr>
 
@@ -45,44 +38,20 @@
             <td class="tb_other">Aircraft name:</td>
             <td class="tb_other"><form:input path="aircraftName"/></td>
           </tr>
-          <tr>
-            <td colspan="2" align="right">
-              <c:set var="isError"><form:errors path="aircraftName"/></c:set>
-              <div class ="${not empty isError ? "errYes": "errNo"}">Please, enter the name from 2 to 50 characters&nbsp;</div>
-            </td>
-          </tr>
 
           <tr>
             <td class="tb_other">Number of passengers:</td>
             <td class="tb_other"><form:input path="aircraftPassengers"/></td>
-          </tr>
-          <tr>
-            <td colspan="2" align="right">
-              <c:set var="isError"><form:errors path="aircraftPassengers"/></c:set>
-              <div class ="${not empty isError ? "errYes": "errNo"}">Please, enter the number from 0 to 10 000 &nbsp;</div>
-            </td>
           </tr>
 
           <tr>
             <td class="tb_other">Maximum weight: </td>
             <td class="tb_other"><form:input path="aircraftMaxWeightKg"/></td>
           </tr>
-          <tr>
-            <td colspan="2" align="right">
-              <c:set var="isError"><form:errors path="aircraftMaxWeightKg"/></c:set>
-              <div class ="${not empty isError ? "errYes": "errNo"}">Please, enter the number from 0 to 1 000 000&nbsp;</div>
-            </td>
-          </tr>
 
           <tr>
             <td class="tb_other">Maximum flight range, km: </td>
             <td class="tb_other"><form:input path="aircraftMaxRangeKm"/></td>
-          </tr>
-          <tr>
-            <td colspan="2" align="right">
-              <c:set var="isError"><form:errors path="aircraftMaxRangeKm"/></c:set>
-              <div class ="${not empty isError ? "errYes": "errNo"}">Please, enter the number from 0 to 100 000 &nbsp;</div>
-            </td>
           </tr>
 
           <tr align="right">
