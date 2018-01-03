@@ -15,7 +15,7 @@ import javax.validation.Valid;
 @Controller
 public class CRUDController {
 
-/* =============================== Инициализация  =============================== */
+/* =============================== Инициализация  ======================================= */
 
     private IService service;
 
@@ -25,8 +25,13 @@ public class CRUDController {
         this.service = service;
     }
 
+/* ======================================================================================= */
+
+
 
 /* =============================== Вспомогательные методы  =============================== */
+
+    /* ----------- подготовка страницы - загрузка объекта и таблицы для вывода ----------- */
 
     public String jspPage ( Model model, IDBRecord dbRecord,
                             String recordInJsp, String listInJsp, String NameOfJspPage ) {
@@ -34,13 +39,13 @@ public class CRUDController {
         model.addAttribute(listInJsp, this.service.listRecords(dbRecord.getClass()));
         return NameOfJspPage;
     }
+    /* ----------------------------------------------------------------------------------- */
 
+
+    /* ------------------ выполнение операций Add, Update, Delete ------------------------ */
 
     public String jspPageAction ( Model model, IDBRecord dbRecord, boolean bindResHasErrors,
                                   String recordInJsp, String listInJsp, String NameOfJspPage, IMethod method ){
-
-        System.out.println(bindResHasErrors);
-        System.out.println(dbRecord);
 
         if ( !bindResHasErrors ) {
             method.action(dbRecord);
@@ -52,11 +57,24 @@ public class CRUDController {
         }
         return jspPage(model, dbRecord, recordInJsp, listInJsp, NameOfJspPage);
     }
+    /* ----------------------------------------------------------------------------------- */
+
+
+    /* ------------------------- выполнение операции Wiev -------------------------------- */
+
+    public String jspPageActionView ( Model model, Class clazz, int id,
+                                   String recordInJsp, String listInJsp, String NameOfJspPage ){
+
+        IDBRecord dbRecord = this.service.getById(clazz, id);
+        return jspPage(model, dbRecord, recordInJsp, listInJsp, NameOfJspPage);
+    }
+    /* ----------------------------------------------------------------------------------- */
+
 
 
 /* =============================== Aircraft controller  =============================== */
 
-    /* ------------- add  ------------- */
+    /* ------------- Add  ------------- */
 
     @RequestMapping(value = "aircraftAddShow", method = RequestMethod.GET)
     public String aircraftAddShow(Model model) {
@@ -67,7 +85,7 @@ public class CRUDController {
         return jspPageAction(model, aircraft, bindRes.hasErrors(), "Aircraft", "listAircrafts", "addAircraftPage", this.service::add);
     }
 
-    /* ------------- upd  ------------- */
+    /* ------------- Upd  ------------- */
 
     @RequestMapping(value = "aircraftUpdShow", method = RequestMethod.GET)
     public String aircraftUpdShow(Model model) {
@@ -78,7 +96,7 @@ public class CRUDController {
         return jspPageAction(model, aircraft, bindRes.hasErrors(), "Aircraft", "listAircrafts", "updAircraftPage", this.service::update);
     }
 
-    /* ------------- del  ------------- */
+    /* ------------- Del  ------------- */
 
     @RequestMapping(value = "aircraftDelShow", method = RequestMethod.GET)
     public String aircraftDelShow(Model model) {
@@ -89,7 +107,7 @@ public class CRUDController {
         return jspPageAction(model, aircraft, false, "Aircraft", "listAircrafts", "delAircraftPage", this.service::remove);
     }
 
-    /* ------------- view  ------------- */
+    /* ------------- View  ------------ */
 
     @RequestMapping(value = "aircraftViewShow", method = RequestMethod.GET)
     public String aircraftViewShow(Model model) {
@@ -97,16 +115,9 @@ public class CRUDController {
     }
     @RequestMapping(value = "aircraftViewAction", method = RequestMethod.POST)
     public String aircraftViewAction(@ModelAttribute("Aircraft") Aircraft aircraft, Model model) {
-        return jspPageAction2(model, aircraft.getClass(), aircraft.getAircraftId(), "Aircraft", "listAircrafts", "viewAircraftPage");
+        return jspPageActionView(model, aircraft.getClass(), aircraft.getAircraftId(), "Aircraft", "listAircrafts", "viewAircraftPage");
     }
 
-
-    public String jspPageAction2 ( Model model, Class clazz, int id,
-                                  String recordInJsp, String listInJsp, String NameOfJspPage ){
-
-        IDBRecord dbRecord = this.service.getById(clazz, id);
-        return jspPage(model, dbRecord, recordInJsp, listInJsp, NameOfJspPage);
-    }
 
 
 /* =============================== Company controller  =============================== */

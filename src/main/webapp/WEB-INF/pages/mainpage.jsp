@@ -18,8 +18,9 @@
     <span class="head1">"ownership"</span>.
   <p>You can
     <span class="head1">Add</span>,
-    <span class="head1">Update</span>, and
-    <span class="head1">Delete</span> records from tables.
+    <span class="head1">Update</span>,
+    <span class="head1">Delete</span>, and
+    <span class="head1">View</span> records.
 </div>
 <p>&nbsp;
 <table class="tb_main">
