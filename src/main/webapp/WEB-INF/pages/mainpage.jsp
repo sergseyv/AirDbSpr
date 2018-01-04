@@ -27,6 +27,7 @@
   <tr align="center">
     <td valign="top" width="40%">
       <div class ="head2">aircrafts</div>
+
       <table class="tb_edit">
         <tr align="center">
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
@@ -37,8 +38,8 @@
               onclick="location.href='aircraftDelShow'">Delete</td>
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
               onclick="location.href='aircraftViewShow'">View</td>
-
         </tr>
+
       </table>
 
       <table class="tb_info">
@@ -65,15 +66,18 @@
 
     <td valign="top" width="35%">
     <div class ="head2">companies</div>
-    <table class="tb_edit">
-      <tr align="center">
-        <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-            onclick="location.href='companyaddctrl'">Add</td>
-        <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-            onclick="location.href='companyupdctrl'">Update</td>
-        <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-            onclick="location.href='companydelctrl'">Delete</td>
-      </tr>
+
+      <table class="tb_edit">
+        <tr align="center">
+          <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
+              onclick="location.href='companyAddShow'">Add</td>
+          <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
+              onclick="location.href='companyUpdShow'">Update</td>
+          <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
+              onclick="location.href='companyDelShow'">Delete</td>
+          <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
+              onclick="location.href='companyViewShow'">View</td>
+        </tr>
       </table>
 
       <table class="tb_info">
@@ -99,11 +103,14 @@
       <table class="tb_edit">
         <tr align="center">
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-              onclick="location.href='ownershipaddctrl'">Add</td>
+              onclick="location.href='ownershipAddShow'">Add</td>
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-              onclick="location.href='ownershipupdctrl'">Update</td>
+              onclick="location.href='ownershipUpdShow'">Update</td>
           <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
-              onclick="location.href='ownershipdelctrl'">Delete</td>
+              onclick="location.href='ownershipDelShow'">Delete</td>
+          <td class="tb_edit_def" onMouseOver="className='tb_edit_over'" onMouseOut="className='tb_edit_out'"
+              onclick="location.href='ownershipViewShow'">View</td>
+
         </tr>
       </table>
 
