@@ -3,7 +3,6 @@ package com.sseyvach.AirDbSpr.service;
 import com.sseyvach.AirDbSpr.dao.IDao;
 import com.sseyvach.AirDbSpr.model.IDBRecord;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 public class ServiceImplement implements IService {

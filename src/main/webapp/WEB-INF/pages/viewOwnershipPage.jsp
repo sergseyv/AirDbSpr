@@ -40,17 +40,17 @@
           </tr>
 
           <tr>
-            <td class="tb_other">Ownership ID companiy:</td>
+            <td class="tb_other">Company's ID:</td>
             <td class="tb_other"><form:input path="ownershipIdCompanies" readonly="true"/></td>
           </tr>
 
           <tr>
-            <td class="tb_other">Ownership ID aircraft:</td>
+            <td class="tb_other">Aircraft's ID:</td>
             <td class="tb_other"><form:input path="ownershipIdAircraft" readonly="true"/></td>
           </tr>
 
           <tr>
-            <td class="tb_other">Quantity: </td>
+            <td class="tb_other">Quantity of aircrafts:</td>
             <td class="tb_other"><form:input path="ownershipQuantity" readonly="true"/></td>
           </tr>
 
