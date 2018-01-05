@@ -10,4 +10,10 @@ public interface IDao {
     void remove (IDBRecord dbRecord);
     IDBRecord getById (Class clazz, int id);
     List<IDBRecord> listRecords(Class clazz);
+
+    List<Object[]> listJoins1();
+    List<Object[]> listJoins2();
+    List<Object[]> listJoins3();
+    List<Object[]> listJoins4();
+
 }

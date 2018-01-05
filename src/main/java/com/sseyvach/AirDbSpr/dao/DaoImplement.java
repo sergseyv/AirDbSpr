@@ -45,4 +45,38 @@ public class DaoImplement implements IDao {
         Session session = this.sessionFactory.getCurrentSession();
         return session.createQuery ( "from " + clazz.getSimpleName() ).list();
     }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Object[]> listJoins1() {
+        Session session = this.sessionFactory.getCurrentSession();
+        return session.createQuery (
+                " SELECT c.companyName, c.companyCountry, a.aircraftName, o.ownershipQuantity " +
+                " FROM Ownership o " +
+                " JOIN Company c ON o.ownershipIdCompanies = c.companyId " +
+                " JOIN Aircraft a ON o.ownershipIdAircraft = a.aircraftId " +
+                " WHERE a.aircraftName LIKE '%Airbus%' " +
+                " ORDER BY a.aircraftMaxRangeKm ASC "
+        ).getResultList();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Object[]> listJoins2() {
+        return null;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Object[]> listJoins3() {
+        return null;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Object[]> listJoins4() {
+        return null;
+    }
+
+
 }

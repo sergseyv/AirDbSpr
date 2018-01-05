@@ -7,20 +7,21 @@
 <html>
 <head>
   <title>"AVIA / Spring-Hibernate" - Main Page</title>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css"/>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
 </head>
 
 <body>
 <div class ="head">
   <p>Now we have database with 3 tables:<p>
-    <span class="head1">"aircrafts"</span>,
-    <span class="head1">"companies"</span> and
-    <span class="head1">"ownership"</span>.
+  <span class="head1">"aircrafts"</span>,
+  <span class="head1">"companies"</span> and
+  <span class="head1">"ownership"</span>.
   <p>You can
     <span class="head1">Add</span>,
     <span class="head1">Update</span>,
     <span class="head1">Delete</span>, and
     <span class="head1">View</span> records.
+  <p>Also, you can scroll down the page and see several <span class="head1">JOIN</span>-queries.
 </div>
 <p>&nbsp;
 <table class="tb_main">
@@ -65,7 +66,7 @@
     </td>
 
     <td valign="top" width="35%">
-    <div class ="head2">companies</div>
+      <div class ="head2">companies</div>
 
       <table class="tb_edit">
         <tr align="center">
@@ -131,9 +132,48 @@
           </tr>
         </c:forEach>
       </table>
-
     </td>
   </tr>
+
+  <tr><td colspan="3" align="left">
+
+    <table class="tb_join_q"  >
+      <tr>
+        <th>
+          <span class="head1">Query 1.</span>
+          List of all companies and all their aircrafts.
+        </th>
+      </tr>
+      <tr>
+        <td>
+            SELECT companies.name, companies.country, aircrafts.name,  ownership.quantity<br>
+            FROM ownership<br>
+            JOIN companies ON ownership.id_companies = companies.id_companies<br>
+            JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft
+        </td>
+      </tr>
+    </table>
+
+    <table class="tb_join_info">
+      <tr>
+        <th width="27%">company name</th>
+        <th width="27%">country of the company</th>
+        <th width="27%">aircraft name</th>
+        <th>number of aircrafts in the company</th>
+      </tr>
+
+      <c:forEach var="select1" items="${select1ArrayList}">
+        <tr>
+          <td><c:out value="${select1.companyName}" />     </td>
+          <td><c:out value="${select1.companyCountry}" />  </td>
+          <td><c:out value="${select1.aircraftName}" />   </td>
+          <td><c:out value="${select1.ownershipQuantity}" /></td>
+        </tr>
+      </c:forEach>
+
+    </table>
+    </td></tr>
+
 </table>
 
 </body>

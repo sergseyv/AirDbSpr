@@ -1,8 +1,11 @@
 package com.sseyvach.AirDbSpr.service;
 
 import com.sseyvach.AirDbSpr.dao.IDao;
+import com.sseyvach.AirDbSpr.model.Examples.ExampleJoin1;
 import com.sseyvach.AirDbSpr.model.IDBRecord;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceImplement implements IService {
@@ -41,4 +44,15 @@ public class ServiceImplement implements IService {
     public List<IDBRecord> listRecords(Class clazz) {
         return this.dao.listRecords(clazz);
     }
+
+    @Override
+    @Transactional
+    public List<ExampleJoin1> listExampleJoin1(){
+        List<ExampleJoin1> ejList = new ArrayList<>();
+        for (Object[] result : this.dao.listJoins1()) {
+            ejList.add ( new ExampleJoin1( (String)result[0], (String)result[1], (String)result[2], (Integer)result[3]));
+        }
+        return ejList;
+    }
+
 }

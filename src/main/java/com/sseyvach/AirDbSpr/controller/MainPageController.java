@@ -28,6 +28,7 @@ public class MainPageController {
         model.addAttribute ( "listAircrafts", this.service.listRecords(Aircraft.class) );
         model.addAttribute ( "listCompanies", this.service.listRecords(Company.class) );
         model.addAttribute ( "listOwnerships", this.service.listRecords(Ownership.class) );
+        model.addAttribute ( "select1ArrayList", this.service.listExampleJoin1());
         return "mainPage";
     }
 

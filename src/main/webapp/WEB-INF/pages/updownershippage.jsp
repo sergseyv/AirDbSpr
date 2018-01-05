@@ -7,7 +7,7 @@
 <html>
 <head>
   <title>"AVIA / Spring-Hibernate" - Upd Ownership Page</title>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css"/>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
 </head>
 
 <body>
