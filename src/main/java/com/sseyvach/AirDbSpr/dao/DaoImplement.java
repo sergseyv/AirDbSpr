@@ -51,7 +51,7 @@ public class DaoImplement implements IDao {
     public List<Object[]> listJoins1() {
         Session session = this.sessionFactory.getCurrentSession();
         return session.createQuery (
-                " SELECT c.companyName, c.companyCountry, a.aircraftName, o.ownershipQuantity " +
+                " SELECT o.ownershipId, c.companyName, c.companyCountry, a.aircraftName, o.ownershipQuantity " +
                 " FROM Ownership o " +
                 " JOIN Company c ON o.ownershipIdCompanies = c.companyId " +
                 " JOIN Aircraft a ON o.ownershipIdAircraft = a.aircraftId "
@@ -75,14 +75,16 @@ public class DaoImplement implements IDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<Object[]> listJoins3() {
-        return null;
+        Session session = this.sessionFactory.getCurrentSession();
+        return session.createQuery(
+                " SELECT c.companyName, c.companyCountry, SUM(o.ownershipQuantity) " +
+                " FROM Ownership o " +
+                " JOIN Company c ON o.ownershipIdCompanies = c.companyId " +
+                " JOIN Aircraft a ON o.ownershipIdAircraft = a.aircraftId " +
+                " WHERE a.aircraftName LIKE '%Boeing%' " +
+                " GROUP BY o.ownershipIdCompanies " +
+                " ORDER BY SUM(o.ownershipQuantity) DESC "
+        ).getResultList();
     }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public List<Object[]> listJoins4() {
-        return null;
-    }
-
 
 }

@@ -146,48 +146,51 @@
       </tr>
       <tr>
         <td>
-            SELECT companies.name, companies.country, aircrafts.name,  ownership.quantity<br>
-            FROM ownership<br>
-            JOIN companies ON ownership.id_companies = companies.id_companies<br>
-            JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft
+          SELECT o.ownershipId, c.companyName, c.companyCountry, a.aircraftName, o.ownershipQuantity <br>
+          FROM Ownership o <br>
+          JOIN Company c ON o.ownershipIdCompanies = c.companyId <br>
+          JOIN Aircraft a ON o.ownershipIdAircraft = a.aircraftId
         </td>
       </tr>
     </table>
 
     <table class="tb_join_info">
       <tr>
-        <th width="27%">company name</th>
-        <th width="27%">country of the company</th>
-        <th width="27%">aircraft name</th>
+        <th>ownership ID</th>
+        <th width="25%">company name</th>
+        <th width="25%">country of the company</th>
+        <th width="25%">aircraft name</th>
         <th>number of aircrafts in the company</th>
       </tr>
 
       <c:forEach var="select1" items="${select1ArrayList}">
         <tr>
+          <td><c:out value="${select1.ownershipId}" />     </td>
           <td><c:out value="${select1.companyName}" />     </td>
           <td><c:out value="${select1.companyCountry}" />  </td>
           <td><c:out value="${select1.aircraftName}" />   </td>
           <td><c:out value="${select1.ownershipQuantity}" /></td>
         </tr>
       </c:forEach>
-
     </table>
 
-    <p>
+    <p><br><p>
 
     <table class="tb_join_q"  >
       <tr>
         <th>
           <span class="head1">Query 2.</span>
-          List of all companies and all their aircrafts.
+          List of all Airbus airplanes with their companies, sorted in ascending maximum flight range.
         </th>
       </tr>
       <tr>
         <td>
-          SELECT companies.name, companies.country, aircrafts.name,  ownership.quantity<br>
-          FROM ownership<br>
-          JOIN companies ON ownership.id_companies = companies.id_companies<br>
-          JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft
+          SELECT c.companyName, c.companyCountry, a.aircraftName, a.aircraftMaxRangeKm, o.ownershipQuantity <br>
+          FROM Ownership o <br>
+          JOIN Company c ON o.ownershipIdCompanies = c.companyId <br>
+          JOIN Aircraft a ON o.ownershipIdAircraft = a.aircraftId <br>
+          WHERE a.aircraftName LIKE '%Airbus%' <br>
+          ORDER BY a.aircraftMaxRangeKm ASC
         </td>
       </tr>
     </table>
@@ -210,9 +213,45 @@
           <td><c:out value="${select2.ownershipQuantity}" /></td>
         </tr>
       </c:forEach>
-
     </table>
 
+    <p><br><p>
+
+    <table class="tb_join_q"  >
+      <tr>
+        <th>
+          <span class="head1">Query 3.</span>
+          List shows how many Boeings each company has, sorted in descending order.
+        </th>
+      </tr>
+      <tr>
+        <td>
+          SELECT c.companyName, c.companyCountry, SUM(o.ownershipQuantity) <br>
+          FROM Ownership o <br>
+          JOIN Company c ON o.ownershipIdCompanies = c.companyId <br>
+          JOIN Aircraft a ON o.ownershipIdAircraft = a.aircraftId <br>
+          WHERE a.aircraftName LIKE '%Boeing%' <br>
+          GROUP BY o.ownershipIdCompanies <br>
+          ORDER BY SUM(o.ownershipQuantity) DESC
+        </td>
+      </tr>
+    </table>
+    <table class="tb_join_info">
+      <tr>
+        <th width="40%">company name</th>
+        <th width="40%">country of the company</th>
+        <th>number of Boeings in the company</th>
+      </tr>
+
+      <c:forEach var="select3" items="${select3ArrayList}">
+        <tr>
+          <td><c:out value="${select3.companyName}" />     </td>
+          <td><c:out value="${select3.companyCountry}" />  </td>
+          <td><c:out value="${select3.sumOwnershipQuantity}" />   </td>
+        </tr>
+      </c:forEach>
+
+    </table>
 
 
 

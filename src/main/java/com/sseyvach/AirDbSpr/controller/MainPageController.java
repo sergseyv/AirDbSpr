@@ -31,7 +31,6 @@ public class MainPageController {
         model.addAttribute ( "select1ArrayList", this.service.listExampleJoin1());
         model.addAttribute ( "select2ArrayList", this.service.listExampleJoin2());
         model.addAttribute ( "select3ArrayList", this.service.listExampleJoin3());
-        model.addAttribute ( "select4ArrayList", this.service.listExampleJoin4());
         return "mainPage";
     }
 

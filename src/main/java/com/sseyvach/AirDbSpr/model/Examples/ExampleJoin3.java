@@ -3,12 +3,12 @@ package com.sseyvach.AirDbSpr.model.Examples;
 public class ExampleJoin3 {
     private String companyName;
     private String companyCountry;
-    private int ownershipQuantity;
+    private Long sumOwnershipQuantity;
 
-    public ExampleJoin3(String companyName, String companyCountry, int ownershipQuantity) {
+    public ExampleJoin3(String companyName, String companyCountry, Long sumOwnershipQuantity) {
         this.companyName = companyName;
         this.companyCountry = companyCountry;
-        this.ownershipQuantity = ownershipQuantity;
+        this.sumOwnershipQuantity = sumOwnershipQuantity;
     }
 
     public String getCompanyName() {
@@ -27,12 +27,12 @@ public class ExampleJoin3 {
         this.companyCountry = companyCountry;
     }
 
-    public int getOwnershipQuantity() {
-        return ownershipQuantity;
+    public Long getSumOwnershipQuantity() {
+        return sumOwnershipQuantity;
     }
 
-    public void setOwnershipQuantity(int ownershipQuantity) {
-        this.ownershipQuantity = ownershipQuantity;
+    public void setSumOwnershipQuantity(Long sumOwnershipQuantity) {
+        this.sumOwnershipQuantity = sumOwnershipQuantity;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class ExampleJoin3 {
         return "ExampleJoin3{" +
                 "companyName='" + companyName + '\'' +
                 ", companyCountry='" + companyCountry + '\'' +
-                ", ownershipQuantity=" + ownershipQuantity +
+                ", sumOwnershipQuantity=" + sumOwnershipQuantity +
                 '}';
     }
 }

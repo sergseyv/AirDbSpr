@@ -1,16 +1,26 @@
 package com.sseyvach.AirDbSpr.model.Examples;
 
 public class ExampleJoin1 {
+    private int ownershipId;
     private String companyName;
     private String companyCountry;
     private String aircraftName;
     private int ownershipQuantity;
 
-    public ExampleJoin1(String companyName, String companyCountry, String aircraftName, int ownershipQuantity) {
+    public ExampleJoin1(int ownershipId, String companyName, String companyCountry, String aircraftName, int ownershipQuantity) {
+        this.ownershipId = ownershipId;
         this.companyName = companyName;
         this.companyCountry = companyCountry;
         this.aircraftName = aircraftName;
         this.ownershipQuantity = ownershipQuantity;
+    }
+
+    public int getOwnershipId() {
+        return ownershipId;
+    }
+
+    public void setOwnershipId(int ownershipId) {
+        this.ownershipId = ownershipId;
     }
 
     public String getCompanyName() {
@@ -48,7 +58,8 @@ public class ExampleJoin1 {
     @Override
     public String toString() {
         return "ExampleJoin1{" +
-                "companyName='" + companyName + '\'' +
+                "ownershipId=" + ownershipId +
+                ", companyName='" + companyName + '\'' +
                 ", companyCountry='" + companyCountry + '\'' +
                 ", aircraftName='" + aircraftName + '\'' +
                 ", ownershipQuantity=" + ownershipQuantity +

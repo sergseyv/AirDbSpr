@@ -14,6 +14,4 @@ public interface IDao {
     List<Object[]> listJoins1();
     List<Object[]> listJoins2();
     List<Object[]> listJoins3();
-    List<Object[]> listJoins4();
-
 }
