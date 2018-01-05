@@ -172,6 +172,50 @@
       </c:forEach>
 
     </table>
+
+    <p>
+
+    <table class="tb_join_q"  >
+      <tr>
+        <th>
+          <span class="head1">Query 2.</span>
+          List of all companies and all their aircrafts.
+        </th>
+      </tr>
+      <tr>
+        <td>
+          SELECT companies.name, companies.country, aircrafts.name,  ownership.quantity<br>
+          FROM ownership<br>
+          JOIN companies ON ownership.id_companies = companies.id_companies<br>
+          JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft
+        </td>
+      </tr>
+    </table>
+
+    <table class="tb_join_info">
+      <tr>
+        <th width="25%">company name</th>
+        <th width="25%">country of the company</th>
+        <th width="20%">aircraft name</th>
+        <th width="15%">maximum flight range, km</th>
+        <th>number of aircrafts in the company</th>
+      </tr>
+
+      <c:forEach var="select2" items="${select2ArrayList}">
+        <tr>
+          <td><c:out value="${select2.companyName}" />     </td>
+          <td><c:out value="${select2.companyCountry}" />  </td>
+          <td><c:out value="${select2.aircraftName}" />   </td>
+          <td><c:out value="${select2.aircraftMaxRangeKm}" />   </td>
+          <td><c:out value="${select2.ownershipQuantity}" /></td>
+        </tr>
+      </c:forEach>
+
+    </table>
+
+
+
+
     </td></tr>
 
 </table>

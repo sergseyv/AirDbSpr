@@ -54,16 +54,22 @@ public class DaoImplement implements IDao {
                 " SELECT c.companyName, c.companyCountry, a.aircraftName, o.ownershipQuantity " +
                 " FROM Ownership o " +
                 " JOIN Company c ON o.ownershipIdCompanies = c.companyId " +
-                " JOIN Aircraft a ON o.ownershipIdAircraft = a.aircraftId " +
-                " WHERE a.aircraftName LIKE '%Airbus%' " +
-                " ORDER BY a.aircraftMaxRangeKm ASC "
+                " JOIN Aircraft a ON o.ownershipIdAircraft = a.aircraftId "
         ).getResultList();
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public List<Object[]> listJoins2() {
-        return null;
+        Session session = this.sessionFactory.getCurrentSession();
+        return session.createQuery(
+                " SELECT c.companyName, c.companyCountry, a.aircraftName, a.aircraftMaxRangeKm, o.ownershipQuantity " +
+                " FROM Ownership o " +
+                " JOIN Company c ON o.ownershipIdCompanies = c.companyId " +
+                " JOIN Aircraft a ON o.ownershipIdAircraft = a.aircraftId " +
+                " WHERE a.aircraftName LIKE '%Airbus%' " +
+                " ORDER BY a.aircraftMaxRangeKm ASC "
+        ).getResultList();
     }
 
     @Override
