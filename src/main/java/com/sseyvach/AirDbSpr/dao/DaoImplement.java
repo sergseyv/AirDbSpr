@@ -1,6 +1,5 @@
 package com.sseyvach.AirDbSpr.dao;
 
-import com.sseyvach.AirDbSpr.model.Aircraft;
 import com.sseyvach.AirDbSpr.model.IDBRecord;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

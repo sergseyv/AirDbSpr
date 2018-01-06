@@ -6,7 +6,6 @@ import com.sseyvach.AirDbSpr.model.Examples.ExampleJoin2;
 import com.sseyvach.AirDbSpr.model.Examples.ExampleJoin3;
 import com.sseyvach.AirDbSpr.model.IDBRecord;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
 import java.util.List;
 

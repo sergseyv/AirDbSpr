@@ -3,7 +3,6 @@ package com.sseyvach.AirDbSpr.controller;
 import com.sseyvach.AirDbSpr.model.Aircraft;
 import com.sseyvach.AirDbSpr.model.Company;
 import com.sseyvach.AirDbSpr.model.Ownership;
-
 import com.sseyvach.AirDbSpr.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

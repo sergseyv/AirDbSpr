@@ -8,6 +8,7 @@ import com.sseyvach.AirDbSpr.model.IDBRecord;
 import java.util.List;
 
 public interface IService {
+
     void add (IDBRecord dbRecord);
     void update (IDBRecord dbRecord);
     void remove (IDBRecord dbRecord);
